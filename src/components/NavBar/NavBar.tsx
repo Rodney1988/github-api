@@ -37,7 +37,7 @@ export const NavBar = () => {
         onClick={() => setIsExpanded(!isExpanded)}
         data-testid="hamburger-button"
       >
-        <MenuIcon />
+        <MenuIcon sx={{ color: '#f2f2f2' }} />
         {isExpanded && (
           <StyledHamburgerBottom data-testid="expanded-section">
             <StyledHamburgerUl>

@@ -1,12 +1,21 @@
+import { useState } from 'react';
+
+import MenuIcon from '@mui/icons-material/Menu';
 import {
   StyledLogo,
   StyledNavLinkStyled,
   StyledNavMenu,
   StyledNavMenuItem,
   StyledNavbarContainer,
+  StyledHamburgerMenu,
+  StyledHamburgerBottom,
+  StyledHamburgerUl,
+  StyledHamburgerLi,
 } from './NavBar.styled';
 
 export const NavBar = () => {
+  const [isExpanded, setIsExpanded] = useState<boolean>(false);
+
   return (
     <StyledNavbarContainer>
       <StyledLogo to="/" aria-label="Home">
@@ -24,6 +33,31 @@ export const NavBar = () => {
           </StyledNavLinkStyled>
         </StyledNavMenuItem>
       </StyledNavMenu>
+      <StyledHamburgerMenu
+        onClick={() => setIsExpanded(!isExpanded)}
+        data-testid="hamburger-button"
+      >
+        <MenuIcon />
+        {isExpanded && (
+          <StyledHamburgerBottom data-testid="expanded-section">
+            <StyledHamburgerUl>
+              <StyledHamburgerLi>
+                <StyledNavLinkStyled to="/" aria-label="Home">
+                  Home
+                </StyledNavLinkStyled>
+              </StyledHamburgerLi>
+              <StyledHamburgerLi>
+                <StyledNavLinkStyled
+                  to="/instructions"
+                  aria-label="Instructions"
+                >
+                  Instructions
+                </StyledNavLinkStyled>
+              </StyledHamburgerLi>
+            </StyledHamburgerUl>
+          </StyledHamburgerBottom>
+        )}
+      </StyledHamburgerMenu>
     </StyledNavbarContainer>
   );
 };

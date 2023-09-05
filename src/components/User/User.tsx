@@ -116,7 +116,7 @@ export const StyledGithubUser = styled.div`
 `;
 
 export const StyledExpandableDiv = styled.div<StyledGithubUserProps>`
-  max-height: ${({ expanded }) => (expanded ? '100%' : '0')};
+  max-height: ${({ expanded }) => (expanded ? '258px' : '0px')};
   overflow: scroll;
   transition: max-height 0.3s ease-in-out;
 `;

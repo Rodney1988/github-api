@@ -1,25 +1,61 @@
-import { useQuery } from 'react-query';
-import { useState } from 'react';
-
-import { GithubRepo, GithubUser, StyledGithubUserProps } from '../../types';
-import { getRepos } from '../../Api';
 import styled from '@emotion/styled';
 
-export interface UserProp {
-  userProp: GithubUser;
-}
+import { useState } from 'react';
+import { useQuery } from 'react-query';
 
-export const User: React.FC<UserProp> = ({ userProp }) => {
+import DownArrowIcon from '@mui/icons-material/KeyboardDoubleArrowDown';
+import UpArrowIcon from '@mui/icons-material/KeyboardDoubleArrowUp';
+import { CircularProgress } from '@mui/material';
+import { GithubRepo, StyledGithubUserProps, UserProp } from '../../types';
+import { getRepos } from '../../Api';
+
+const User: React.FC<UserProp> = ({ userProp }) => {
   const [isExpanded, setIsExpanded] = useState<boolean>(false);
-  const { data: reposData } = useQuery(['userRepos', userProp.id], async () => {
-    const data = getRepos(userProp.repos_url);
-    return data;
-  });
+  const [queryIsFinished, setQueryIsFinished] = useState<boolean>(false);
 
-  const loadingPre = (
+  const {
+    data: reposData,
+    isLoading,
+    isError,
+  } = useQuery(
+    ['userRepos', userProp.id],
+    async () => {
+      const data = getRepos(userProp.repos_url);
+      return data;
+    },
+    {
+      onSuccess: () => {
+        setQueryIsFinished(true);
+      },
+    }
+  );
+
+  let reposDataModified = reposData || [];
+  if (!Array.isArray(reposDataModified)) {
+    reposDataModified = [];
+  }
+
+  let arrowJSXIcon;
+  let loadingPre = (
     <pre style={{ marginLeft: '15px' }}>Loading Repository...</pre>
   );
-  const reposDataModified = reposData || [];
+
+  if (isLoading) {
+    arrowJSXIcon = <CircularProgress size={20} aria-label="Loading" />;
+  } else {
+    arrowJSXIcon = isExpanded ? <DownArrowIcon /> : <UpArrowIcon />;
+  }
+  if (isError) {
+    arrowJSXIcon = <></>;
+    loadingPre = (
+      <pre style={{ marginLeft: '15px' }}>Error loading repositories</pre>
+    );
+  }
+  if (queryIsFinished) {
+    if (reposDataModified.length === 0) {
+      arrowJSXIcon = <></>;
+    }
+  }
 
   return (
     <StyledGithubUser onClick={() => setIsExpanded(!isExpanded)}>
@@ -27,6 +63,7 @@ export const User: React.FC<UserProp> = ({ userProp }) => {
         <h4 data-testid="title" style={{ marginLeft: '15px' }}>
           User: {userProp.login}
         </h4>
+        <StyledIconContainer>{arrowJSXIcon}</StyledIconContainer>
       </StyledHead>
 
       <StyledExpandableDiv expanded={isExpanded}>
@@ -120,3 +157,5 @@ export const StyledExpandableDiv = styled.div<StyledGithubUserProps>`
   overflow: scroll;
   transition: max-height 0.3s ease-in-out;
 `;
+
+export default User;

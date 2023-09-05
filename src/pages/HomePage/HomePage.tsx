@@ -3,8 +3,8 @@ import { useQuery } from 'react-query';
 import { useSearchParams } from 'react-router-dom';
 import { Button, CircularProgress, OutlinedInput } from '@mui/material';
 
-import { User } from '../../components/User/User';
 import { getGithub } from '../../Api';
+import UserWithSuspense from '../../components/User/UserWithSuspense';
 
 export const HomePage = () => {
   const [input, setInput] = useState<string>('');
@@ -129,7 +129,9 @@ export const HomePage = () => {
         {data?.length === 0 ? (
           <pre aria-label="No Users Found">No Users found</pre>
         ) : (
-          data?.map((user) => <User userProp={user} key={user.id} />)
+          data?.map((user) => (
+            <UserWithSuspense userProp={user} key={user.id} />
+          ))
         )}
       </div>
     </div>

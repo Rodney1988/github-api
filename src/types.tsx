@@ -2,6 +2,10 @@ export interface StyledGithubUserProps {
   expanded: boolean;
 }
 
+export interface UserProp {
+  userProp: GithubUser;
+}
+
 export interface GithubUser {
   login: string;
   id: number;

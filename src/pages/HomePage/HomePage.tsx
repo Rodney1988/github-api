@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { getGithub } from '../../Api';
 import { useQuery } from 'react-query';
 import { useSearchParams } from 'react-router-dom';
@@ -12,6 +12,12 @@ export const HomePage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const searchValueParam = searchParams.get('searchQuery');
   const followerCountParam = searchParams.get('followerNum');
+
+  useEffect(() => {
+    if (!!searchValueParam && !!followerCountParam) {
+      setSubmitted(true);
+    }
+  }, [searchValueParam, followerCountParam]);
 
   const { data, isLoading, isError, error } = useQuery(
     ['githubUsers', searchValueParam, followerCountParam],

@@ -1,6 +1,8 @@
 import { QueryClient, QueryClientProvider } from 'react-query';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { HomePage } from './pages/HomePage/HomePage';
+import { NavBar } from './components/NavBar/NavBar';
+import { Instructions } from './pages/Instructions/Instructions';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -12,7 +14,11 @@ function App() {
   return (
     <BrowserRouter>
       <QueryClientProvider client={queryClient}>
-        <HomePage />
+        <NavBar />
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/instructions" element={<Instructions />} />
+        </Routes>
       </QueryClientProvider>
     </BrowserRouter>
   );

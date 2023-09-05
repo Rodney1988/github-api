@@ -16,7 +16,8 @@ export const HomePage = () => {
   const searchValueParam = searchParams.get('searchQuery');
   const followerCountParam = searchParams.get('followerNum');
 
-  /* In case the param values change on refresh or state reset */
+  /* UseEffect in case the submitted state gets reset */
+
   useEffect(() => {
     if (!!searchValueParam && !!followerCountParam) {
       setSubmitted(true);

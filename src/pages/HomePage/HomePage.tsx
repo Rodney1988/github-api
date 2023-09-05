@@ -87,9 +87,7 @@ export const HomePage = () => {
   return (
     <div style={{ width: '100%', height: '100%' }}>
       <div style={{ marginLeft: '15px' }}>
-        <h3 aria-label="Search Header">
-          Search for a profile below, max. 5 users should appear
-        </h3>
+        <h3 aria-label="Search Header">Search for a profile below:</h3>
         <form
           onSubmit={handleSubmit}
           style={{
@@ -101,7 +99,12 @@ export const HomePage = () => {
           <label aria-label="GitHub Name Label">
             GitHub Name:
             <OutlinedInput
-              sx={{ height: '30px', marginTop: '10px', marginLeft: '15px' }}
+              sx={{
+                height: '30px',
+                marginTop: '10px',
+                marginLeft: '15px',
+                width: '150px',
+              }}
               type="text"
               onChange={(e) => setInput(e.target.value)}
               onKeyDown={handleKeyDown}
@@ -111,7 +114,12 @@ export const HomePage = () => {
           <label aria-label="Followers Label">
             Followers (min):
             <OutlinedInput
-              sx={{ height: '30px', marginTop: '10px', marginLeft: '2px' }}
+              sx={{
+                height: '30px',
+                marginTop: '10px',
+                marginLeft: '2px',
+                width: '150px',
+              }}
               type="number"
               onChange={(e) => setFollowerNum(e.target.value)}
               aria-label="Followers Input"

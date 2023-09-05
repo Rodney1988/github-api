@@ -14,6 +14,8 @@ import {
   StyledRepoBox,
 } from './User.styled';
 
+/* User renders each User box which is looped from its parent HomePage component */
+
 const User: React.FC<UserProp> = ({ userProp }) => {
   const [isExpanded, setIsExpanded] = useState<boolean>(false);
   const [queryIsFinished, setQueryIsFinished] = useState<boolean>(false);
@@ -30,12 +32,14 @@ const User: React.FC<UserProp> = ({ userProp }) => {
     },
     {
       onSuccess: () => {
+        /* this state was used to check when the user had no repositories at the end of the query */
         setQueryIsFinished(true);
       },
     }
   );
 
   let reposDataModified = reposData || [];
+  /* In case of alternate response, so the app doesn't crash */
   if (!Array.isArray(reposDataModified)) {
     reposDataModified = [];
   }
@@ -120,5 +124,7 @@ const User: React.FC<UserProp> = ({ userProp }) => {
     </StyledGithubUser>
   );
 };
+
+/* Exported as default User to be used as a react lazy component */
 
 export default User;

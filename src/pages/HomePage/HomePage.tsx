@@ -6,6 +6,8 @@ import { Button, CircularProgress, OutlinedInput } from '@mui/material';
 import { getGithub } from '../../Api';
 import UserWithSuspense from '../../components/User/UserWithSuspense';
 
+/* HomePage renders a form and the result of the form query (Github users) */
+
 export const HomePage = () => {
   const [input, setInput] = useState<string>('');
   const [followerNum, setFollowerNum] = useState<string>('0');
@@ -14,6 +16,7 @@ export const HomePage = () => {
   const searchValueParam = searchParams.get('searchQuery');
   const followerCountParam = searchParams.get('followerNum');
 
+  /* In case the param values change on refresh or state reset */
   useEffect(() => {
     if (!!searchValueParam && !!followerCountParam) {
       setSubmitted(true);
@@ -64,7 +67,7 @@ export const HomePage = () => {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setSearchParams({
-      searchQuery: input ? input : '0',
+      searchQuery: input ? input : '',
       followerNum: followerNum ? followerNum : '0',
     });
     setSubmitted(true);
@@ -74,7 +77,7 @@ export const HomePage = () => {
     if (event.key === 'Enter') {
       event.preventDefault();
       setSearchParams({
-        searchQuery: input ? input : '0',
+        searchQuery: input ? input : '',
         followerNum: followerNum ? followerNum : '0',
       });
       setSubmitted(true);
@@ -85,7 +88,7 @@ export const HomePage = () => {
     <div style={{ width: '100%', height: '100%' }}>
       <div style={{ marginLeft: '15px' }}>
         <h3 aria-label="Search Header">
-          Search for a profile below, max 5 users should appear
+          Search for a profile below, max. 5 users should appear
         </h3>
         <form
           onSubmit={handleSubmit}

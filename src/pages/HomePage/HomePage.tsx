@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react';
-import { getGithub } from '../../Api';
 import { useQuery } from 'react-query';
 import { useSearchParams } from 'react-router-dom';
 import { Button, CircularProgress, OutlinedInput } from '@mui/material';
+
 import { User } from '../../components/User/User';
+import { getGithub } from '../../Api';
 
 export const HomePage = () => {
   const [input, setInput] = useState<string>('');

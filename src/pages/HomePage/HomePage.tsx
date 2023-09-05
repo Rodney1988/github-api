@@ -3,6 +3,7 @@ import { getGithub } from '../../Api';
 import { useQuery } from 'react-query';
 import { useSearchParams } from 'react-router-dom';
 import { Button, CircularProgress, OutlinedInput } from '@mui/material';
+import { User } from '../../components/User/User';
 
 export const HomePage = () => {
   const [input, setInput] = useState<string>('');
@@ -17,9 +18,12 @@ export const HomePage = () => {
     () => getGithub(searchValueParam, followerCountParam),
     {
       enabled: submitted && !!searchValueParam && !!followerCountParam,
+      onSuccess: () => {
+        setInput('');
+        setFollowerNum('');
+      },
     }
   );
-  console.log('response test:', data);
 
   if (isLoading) {
     return (
@@ -113,6 +117,13 @@ export const HomePage = () => {
             Search Accounts
           </Button>
         </form>
+      </div>
+      <div>
+        {data?.length === 0 ? (
+          <pre aria-label="No Users Found">No Users found</pre>
+        ) : (
+          data?.map((user) => <User userProp={user} key={user.id} />)
+        )}
       </div>
     </div>
   );

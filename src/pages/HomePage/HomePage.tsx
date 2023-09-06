@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react';
 import { useQuery } from 'react-query';
 import { useSearchParams } from 'react-router-dom';
-import { Button, CircularProgress, OutlinedInput } from '@mui/material';
+import { Button, CircularProgress } from '@mui/material';
 
 import { getGithub } from '../../Api';
 import UserWithSuspense from '../../components/User/UserWithSuspense';
+import { StyledFollowersInput, StyledNameInput } from './HomePage.styled';
 
 /* HomePage renders a form and the result of the form query (Github users) */
 
@@ -98,14 +99,8 @@ export const HomePage = () => {
           aria-label="Search Form"
         >
           <label aria-label="GitHub Name Label">
-            GitHub Name:
-            <OutlinedInput
-              sx={{
-                height: '30px',
-                marginTop: '10px',
-                marginLeft: '15px',
-                width: '150px',
-              }}
+            Name:
+            <StyledNameInput
               type="text"
               onChange={(e) => setInput(e.target.value)}
               onKeyDown={handleKeyDown}
@@ -113,27 +108,21 @@ export const HomePage = () => {
             />
           </label>
           <label aria-label="Followers Label">
-            Followers (min):
-            <OutlinedInput
-              sx={{
-                height: '30px',
-                marginTop: '10px',
-                marginLeft: '2px',
-                width: '150px',
-              }}
+            Followers:
+            <StyledFollowersInput
               type="number"
               onChange={(e) => setFollowerNum(e.target.value)}
               aria-label="Followers Input"
-            ></OutlinedInput>
+            ></StyledFollowersInput>
           </label>
           <Button
             disabled={!input}
             type="submit"
-            style={{ width: '200px', marginTop: '15px' }}
+            style={{ width: '160px', marginTop: '15px' }}
             aria-label="Search Button"
             variant="contained"
           >
-            Search Accounts
+            Search Users
           </Button>
         </form>
       </div>

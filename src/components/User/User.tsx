@@ -3,6 +3,7 @@ import { useQuery } from 'react-query';
 import DownArrowIcon from '@mui/icons-material/KeyboardDoubleArrowDown';
 import UpArrowIcon from '@mui/icons-material/KeyboardDoubleArrowUp';
 import { CircularProgress } from '@mui/material';
+import Star from '@mui/icons-material/Star';
 
 import { GithubRepo, UserProp } from '../../types';
 import { getRepos } from '../../Api';
@@ -12,6 +13,7 @@ import {
   StyledHead,
   StyledIconContainer,
   StyledRepoBox,
+  StyledStarContainer,
 } from './User.styled';
 
 /* User renders each User box which is looped from its parent HomePage component */
@@ -38,6 +40,14 @@ const User: React.FC<UserProp> = ({ userProp }) => {
     }
   );
 
+  function truncateString(string: string, number: number): string {
+    if (string.length > number) {
+      return string.slice(0, number) + '...';
+    } else {
+      return string;
+    }
+  }
+
   let reposDataModified = reposData || [];
   /* In case of alternate response, so the app doesn't crash */
   if (!Array.isArray(reposDataModified)) {
@@ -52,7 +62,7 @@ const User: React.FC<UserProp> = ({ userProp }) => {
   if (isLoading) {
     arrowJSXIcon = <CircularProgress size={20} aria-label="Loading" />;
   } else {
-    arrowJSXIcon = isExpanded ? <DownArrowIcon /> : <UpArrowIcon />;
+    arrowJSXIcon = isExpanded ? <UpArrowIcon /> : <DownArrowIcon />;
   }
   if (isError) {
     arrowJSXIcon = <></>;
@@ -62,7 +72,7 @@ const User: React.FC<UserProp> = ({ userProp }) => {
   }
   if (queryIsFinished) {
     if (reposDataModified.length === 0) {
-      arrowJSXIcon = <></>;
+      arrowJSXIcon = '(no repos)';
     }
   }
 
@@ -70,7 +80,7 @@ const User: React.FC<UserProp> = ({ userProp }) => {
     <StyledGithubUser onClick={() => setIsExpanded(!isExpanded)}>
       <StyledHead>
         <h4 data-testid="title" style={{ marginLeft: '15px' }}>
-          User: {userProp.login}
+          Github User - {truncateString(userProp.login, 14)}
         </h4>
         <StyledIconContainer>{arrowJSXIcon}</StyledIconContainer>
       </StyledHead>
@@ -80,19 +90,19 @@ const User: React.FC<UserProp> = ({ userProp }) => {
           <>
             {reposData
               ? reposDataModified.map((repo: GithubRepo) => {
-                  const maxLength = 60;
+                  const starsCount = repo.stargazers_count;
+                  const maxDescriptionLength = 38;
+                  const repoName = repo.name;
                   let repoDescription = repo.description;
 
-                  if (repoDescription && repoDescription.length > maxLength) {
-                    repoDescription =
-                      repoDescription.slice(0, maxLength) + '...';
-                  }
                   if (
                     repoDescription &&
                     repoDescription.startsWith(':symbols:')
                   ) {
-                    repoDescription =
-                      repoDescription?.slice(9, maxLength) + '...';
+                    repoDescription = repoDescription?.slice(
+                      9,
+                      maxDescriptionLength
+                    );
                   }
                   return (
                     <div
@@ -105,12 +115,45 @@ const User: React.FC<UserProp> = ({ userProp }) => {
                       }}
                     >
                       <StyledRepoBox key={repo.id}>
-                        <pre style={{ fontWeight: 'bold' }}>
-                          Repo: {repo.name}
+                        {!!starsCount && (
+                          <StyledStarContainer>
+                            <p
+                              style={{
+                                display: 'inline',
+                                padding: '0',
+                                margin: '0',
+                                fontSize: '13px',
+                              }}
+                            >
+                              {starsCount}
+                            </p>
+                            <Star
+                              fontSize="small"
+                              sx={{
+                                transform: 'translateY(2px)',
+                                height: '13px',
+                              }}
+                            />
+                          </StyledStarContainer>
+                        )}
+                        <pre
+                          style={{
+                            fontWeight: 'bold',
+                            maxWidth: '90%',
+                          }}
+                        >
+                          {truncateString(repoName, 23)}
                         </pre>
-                        <pre>
-                          {repo.description
-                            ? `Description: ${repoDescription}`
+                        <pre
+                          style={{
+                            maxWidth: '90%',
+                          }}
+                        >
+                          {repoDescription
+                            ? `Description: ${truncateString(
+                                repoDescription,
+                                38
+                              )}`
                             : 'No Description'}
                         </pre>
                       </StyledRepoBox>

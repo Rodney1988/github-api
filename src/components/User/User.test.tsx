@@ -15,7 +15,6 @@ describe('User Component', () => {
 
     await waitFor(() => {
       const userComponent = screen.getByTestId('title');
-      console.log(userComponent.textContent);
       expect(userComponent).toBeInTheDocument();
     });
   });

@@ -139,7 +139,9 @@ export const HomePage = () => {
       </div>
       <div>
         {data?.length === 0 ? (
-          <pre aria-label="No Users Found">No Users found</pre>
+          <pre style={{ marginLeft: '15px' }} aria-label="No Users Found">
+            No Users found
+          </pre>
         ) : (
           data?.map((user) => (
             <UserWithSuspense userProp={user} key={user.id} />

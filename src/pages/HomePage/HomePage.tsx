@@ -17,14 +17,6 @@ export const HomePage = () => {
   const searchValueParam = searchParams.get('searchQuery');
   const followerCountParam = searchParams.get('followerNum');
 
-  /* UseEffect in case the submitted state gets reset */
-
-  // useEffect(() => {
-  //   if (!!searchValueParam && !!followerCountParam) {
-  //     setSubmitted(true);
-  //   }
-  // }, [searchValueParam, followerCountParam]);
-
   const { data, isLoading, isError, error } = useQuery(
     ['fetchGithubUsers', searchValueParam, followerCountParam],
     () => fetchGithubUsers(searchValueParam, followerCountParam),
@@ -66,7 +58,21 @@ export const HomePage = () => {
     );
   }
 
-  /* SearchUsersForm gets the state props from the HomePage parent */
+  let jsxResult;
+  if (data?.length === 0) {
+    jsxResult = (
+      <pre style={{ marginLeft: '15px' }} aria-label="No Users Found">
+        No Users found
+      </pre>
+    );
+  } else {
+    jsxResult = data?.map((user) => (
+      <UserWithSuspense userProp={user} key={user.id} />
+    ));
+  }
+
+  /* SearchUsersForm gets the state props from the HomePage parent and returns
+    the state to the parent, which is fetched and then displayed in the jsxResult variable */
 
   return (
     <div style={{ width: '100%', height: '100%' }}>
@@ -80,17 +86,7 @@ export const HomePage = () => {
           setSubmitted={setSubmitted}
         />
       </div>
-      <div>
-        {data?.length === 0 ? (
-          <pre style={{ marginLeft: '15px' }} aria-label="No Users Found">
-            No Users found
-          </pre>
-        ) : (
-          data?.map((user) => (
-            <UserWithSuspense userProp={user} key={user.id} />
-          ))
-        )}
-      </div>
+      <div>{jsxResult}</div>
     </div>
   );
 };

@@ -23,4 +23,5 @@ export const Label = styled.label`
   align-items: center;
   max-width: 250px;
   padding-right: 10px;
+  margin-top: 5px;
 `;

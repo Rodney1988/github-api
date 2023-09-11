@@ -6,14 +6,7 @@ import { CircularProgress } from '@mui/material';
 import Star from '@mui/icons-material/Star';
 
 import { getRepos } from '../../Api';
-import {
-  StyledExpandableDiv,
-  StyledGithubUser,
-  StyledHead,
-  StyledIconContainer,
-  StyledRepoBox,
-  StyledStarContainer,
-} from './User.styled';
+import * as S from './User.styled';
 import { UserProp } from '../../types/componentPropTypes';
 import { GithubRepo } from '../../types/repoTypes';
 
@@ -78,15 +71,15 @@ const User: React.FC<UserProp> = ({ userProp }) => {
   }
 
   return (
-    <StyledGithubUser onClick={() => setIsExpanded(!isExpanded)}>
-      <StyledHead>
+    <S.GithubUser onClick={() => setIsExpanded(!isExpanded)}>
+      <S.Head>
         <h4 data-testid="title" style={{ marginLeft: '15px' }}>
           Github User - {truncateString(userProp.login, 14)}
         </h4>
-        <StyledIconContainer>{arrowJSXIcon}</StyledIconContainer>
-      </StyledHead>
+        <S.IconContainer>{arrowJSXIcon}</S.IconContainer>
+      </S.Head>
 
-      <StyledExpandableDiv expanded={isExpanded}>
+      <S.ExpandableDiv expanded={isExpanded}>
         {
           <>
             {reposData
@@ -115,9 +108,9 @@ const User: React.FC<UserProp> = ({ userProp }) => {
                         height: '110px',
                       }}
                     >
-                      <StyledRepoBox key={repo.id}>
+                      <S.RepoBox key={repo.id}>
                         {!!starsCount && (
-                          <StyledStarContainer>
+                          <S.StarContainer>
                             <p
                               style={{
                                 display: 'inline',
@@ -135,7 +128,7 @@ const User: React.FC<UserProp> = ({ userProp }) => {
                                 height: '13px',
                               }}
                             />
-                          </StyledStarContainer>
+                          </S.StarContainer>
                         )}
                         <pre
                           style={{
@@ -157,15 +150,15 @@ const User: React.FC<UserProp> = ({ userProp }) => {
                               )}`
                             : 'No Description'}
                         </pre>
-                      </StyledRepoBox>
+                      </S.RepoBox>
                     </div>
                   );
                 })
               : loadingPre}
           </>
         }
-      </StyledExpandableDiv>
-    </StyledGithubUser>
+      </S.ExpandableDiv>
+    </S.GithubUser>
   );
 };
 

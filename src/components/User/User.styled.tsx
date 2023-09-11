@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import { StyledGithubUserProps } from '../../types/componentPropTypes';
 
-export const StyledHead = styled.div`
+export const Head = styled.div`
   border: '1px solid blue';
   background: #b0aeae;
   height: 60px;
@@ -10,14 +10,14 @@ export const StyledHead = styled.div`
   justify-content: space-between;
 `;
 
-export const StyledIconContainer = styled.div`
+export const IconContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
   margin-right: 15px;
 `;
 
-export const StyledRepoBox = styled.div`
+export const RepoBox = styled.div`
   position: relative;
   background: #e0e0e0;
   width: 300px;
@@ -28,7 +28,7 @@ export const StyledRepoBox = styled.div`
   }
 `;
 
-export const StyledGithubUser = styled.div`
+export const GithubUser = styled.div`
   max-width: 300px;
   background: white;
   margin: 15px;
@@ -39,13 +39,13 @@ export const StyledGithubUser = styled.div`
   }
 `;
 
-export const StyledExpandableDiv = styled.div<StyledGithubUserProps>`
+export const ExpandableDiv = styled.div<StyledGithubUserProps>`
   max-height: ${({ expanded }) => (expanded ? '258px' : '0px')};
   overflow: scroll;
   transition: max-height 0.3s ease-in-out;
 `;
 
-export const StyledStarContainer = styled.div`
+export const StarContainer = styled.div`
   position: absolute;
   top: 5px;
   right: 5px;

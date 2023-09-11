@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useQuery } from 'react-query';
 import { useSearchParams } from 'react-router-dom';
 import { CircularProgress } from '@mui/material';
@@ -16,6 +16,15 @@ export const HomePage = () => {
   const [searchParams] = useSearchParams();
   const searchValueParam = searchParams.get('searchQuery');
   const followerCountParam = searchParams.get('followerNum');
+
+  /* UseEffect in case of refreshing and the submitted state gets reset, forces
+     re-fetch of users */
+
+  useEffect(() => {
+    if (!!searchValueParam && !!followerCountParam) {
+      setSubmitted(true);
+    }
+  }, [searchValueParam, followerCountParam]);
 
   const { data, isLoading, isError, error } = useQuery(
     ['fetchGithubUsers', searchValueParam, followerCountParam],
@@ -46,7 +55,7 @@ export const HomePage = () => {
   if (isError) {
     const issue: Error | null = error as Error;
     return (
-      <pre aria-label="Error with books query">
+      <pre style={{ marginLeft: '10px' }} aria-label="Error with books query">
         Error with fetching the books query: {issue.message}
       </pre>
     );
@@ -54,7 +63,9 @@ export const HomePage = () => {
 
   if (!data && !!searchValueParam) {
     return (
-      <pre aria-label="Error">Something went wrong with the data fetching</pre>
+      <pre style={{ marginLeft: '10px' }} aria-label="Error">
+        Something went wrong with the data fetching
+      </pre>
     );
   }
 

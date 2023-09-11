@@ -130,6 +130,6 @@ const User: React.FC<UserProp> = ({ userProp }) => {
   );
 };
 
-/* Exported as default User to be used as a react lazy component */
+/* As of now, must export as default User for React lazy component to work */
 
 export default User;

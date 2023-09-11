@@ -34,14 +34,6 @@ const User: React.FC<UserProp> = ({ userProp }) => {
     }
   );
 
-  function truncateString(string: string, number: number): string {
-    if (string.length > number) {
-      return string.slice(0, number) + '...';
-    } else {
-      return string;
-    }
-  }
-
   let reposDataModified = reposData || [];
   /* In case of alternate response, so the app doesn't crash */
   if (!Array.isArray(reposDataModified)) {
@@ -73,9 +65,7 @@ const User: React.FC<UserProp> = ({ userProp }) => {
   return (
     <S.GithubUser onClick={() => setIsExpanded(!isExpanded)}>
       <S.Head>
-        <h4 data-testid="title" style={{ marginLeft: '15px' }}>
-          Github User - {truncateString(userProp.login, 14)}
-        </h4>
+        <S.H4 data-testid="title">Github User - {userProp.login}</S.H4>
         <S.IconContainer>{arrowJSXIcon}</S.IconContainer>
       </S.Head>
 
@@ -85,18 +75,14 @@ const User: React.FC<UserProp> = ({ userProp }) => {
             {reposData
               ? reposDataModified.map((repo: GithubRepo) => {
                   const starsCount = repo.stargazers_count;
-                  const maxDescriptionLength = 38;
                   const repoName = repo.name;
-                  let repoDescription = repo.description;
-
+                  let repoDescription =
+                    repo.description || 'No description given.';
                   if (
                     repoDescription &&
                     repoDescription.startsWith(':symbols:')
                   ) {
-                    repoDescription = repoDescription?.slice(
-                      9,
-                      maxDescriptionLength
-                    );
+                    repoDescription = repoDescription?.slice(9);
                   }
                   return (
                     <div
@@ -130,26 +116,8 @@ const User: React.FC<UserProp> = ({ userProp }) => {
                             />
                           </S.StarContainer>
                         )}
-                        <pre
-                          style={{
-                            fontWeight: 'bold',
-                            maxWidth: '90%',
-                          }}
-                        >
-                          {truncateString(repoName, 23)}
-                        </pre>
-                        <pre
-                          style={{
-                            maxWidth: '90%',
-                          }}
-                        >
-                          {repoDescription
-                            ? `Description: ${truncateString(
-                                repoDescription,
-                                38
-                              )}`
-                            : 'No Description'}
-                        </pre>
+                        <S.RepoTitle>{repoName}</S.RepoTitle>
+                        <S.repoDescription>{repoDescription}</S.repoDescription>
                       </S.RepoBox>
                     </div>
                   );

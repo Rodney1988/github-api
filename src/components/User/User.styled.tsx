@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { StyledGithubUserProps } from '../../types';
+import { StyledGithubUserProps } from '../../types/componentPropTypes';
 
 export const StyledHead = styled.div`
   border: '1px solid blue';

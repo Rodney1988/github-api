@@ -1,29 +1,29 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useQuery } from 'react-query';
 import { useSearchParams } from 'react-router-dom';
-import { Button, CircularProgress } from '@mui/material';
+import { CircularProgress } from '@mui/material';
 
 import { fetchGithubUsers } from '../../Api';
 import UserWithSuspense from '../../components/User/UserWithSuspense';
-import * as S from './HomePage.styled';
+import { SearchUsersForm } from '../../components/SearchUsersForm/SearchUsersForm';
 
-/* HomePage renders a form and the result of the form query (Github users) */
+/* HomePage passes its state as props to SearchUsersform */
 
 export const HomePage = () => {
   const [userInput, setUserInput] = useState<string>('');
   const [followerNum, setFollowerNum] = useState<string>('0');
   const [submitted, setSubmitted] = useState<boolean>(false);
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
   const searchValueParam = searchParams.get('searchQuery');
   const followerCountParam = searchParams.get('followerNum');
 
   /* UseEffect in case the submitted state gets reset */
 
-  useEffect(() => {
-    if (!!searchValueParam && !!followerCountParam) {
-      setSubmitted(true);
-    }
-  }, [searchValueParam, followerCountParam]);
+  // useEffect(() => {
+  //   if (!!searchValueParam && !!followerCountParam) {
+  //     setSubmitted(true);
+  //   }
+  // }, [searchValueParam, followerCountParam]);
 
   const { data, isLoading, isError, error } = useQuery(
     ['fetchGithubUsers', searchValueParam, followerCountParam],
@@ -66,65 +66,19 @@ export const HomePage = () => {
     );
   }
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    setSearchParams({
-      searchQuery: userInput ? userInput : '',
-      followerNum: followerNum ? followerNum : '0',
-    });
-    setSubmitted(true);
-  };
-
-  const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
-    if (event.key === 'Enter') {
-      event.preventDefault();
-      setSearchParams({
-        searchQuery: userInput ? userInput : '',
-        followerNum: followerNum ? followerNum : '0',
-      });
-      setSubmitted(true);
-    }
-  };
+  /* SearchUsersForm gets the state props from the HomePage parent */
 
   return (
     <div style={{ width: '100%', height: '100%' }}>
       <div style={{ marginLeft: '15px' }}>
         <h3 aria-label="Search Header">Search for a profile below:</h3>
-        <form
-          onSubmit={handleSubmit}
-          style={{
-            display: 'flex',
-            flexDirection: 'column',
-          }}
-          aria-label="Search Form"
-        >
-          <S.Label aria-label="GitHub Name Label">
-            Name:
-            <S.NameInput
-              type="text"
-              onChange={(e) => setUserInput(e.target.value)}
-              onKeyDown={handleKeyDown}
-              aria-label="GitHub Name Input"
-            />
-          </S.Label>
-          <S.Label aria-label="Followers Label">
-            Followers:
-            <S.FollowersInput
-              type="number"
-              onChange={(e) => setFollowerNum(e.target.value)}
-              aria-label="Followers Input"
-            ></S.FollowersInput>
-          </S.Label>
-          <Button
-            disabled={!userInput}
-            type="submit"
-            style={{ width: '160px', marginTop: '15px' }}
-            aria-label="Search Button"
-            variant="contained"
-          >
-            Search Users
-          </Button>
-        </form>
+        <SearchUsersForm
+          userInput={userInput}
+          setUserInput={setUserInput}
+          followerNum={followerNum}
+          setFollowerNum={setFollowerNum}
+          setSubmitted={setSubmitted}
+        />
       </div>
       <div>
         {data?.length === 0 ? (

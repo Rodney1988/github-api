@@ -5,7 +5,6 @@ import UpArrowIcon from '@mui/icons-material/KeyboardDoubleArrowUp';
 import { CircularProgress } from '@mui/material';
 import Star from '@mui/icons-material/Star';
 
-import { GithubRepo, UserProp } from '../../types';
 import { getRepos } from '../../Api';
 import {
   StyledExpandableDiv,
@@ -15,6 +14,8 @@ import {
   StyledRepoBox,
   StyledStarContainer,
 } from './User.styled';
+import { UserProp } from '../../types/componentPropTypes';
+import { GithubRepo } from '../../types/repoTypes';
 
 /* User renders each User box which is looped from its parent HomePage component */
 

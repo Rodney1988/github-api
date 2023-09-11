@@ -1,5 +1,6 @@
 import { Octokit } from 'octokit';
-import { GithubRepo, GithubUser } from './types';
+import { GithubUser } from './types/userTypes';
+import { GithubRepo } from './types/repoTypes';
 
 const octokit = new Octokit();
 

@@ -1,6 +1,5 @@
 import { lazy, Suspense } from 'react';
-
-import { UserProp } from '../../types';
+import { UserProp } from '../../types/componentPropTypes';
 
 const LazyUser = lazy(() => import('./User'));
 

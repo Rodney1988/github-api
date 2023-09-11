@@ -2,14 +2,7 @@ import { useSearchParams } from 'react-router-dom';
 import { Button } from '@mui/material';
 
 import * as S from './SearchUsersForm.styled';
-
-interface SearchUsersFormProps {
-  userInput: string;
-  setUserInput: React.Dispatch<React.SetStateAction<string>>;
-  followerNum: string;
-  setFollowerNum: React.Dispatch<React.SetStateAction<string>>;
-  setSubmitted: React.Dispatch<React.SetStateAction<boolean>>;
-}
+import { SearchUsersFormProps } from '../../types/componentPropTypes';
 
 export const SearchUsersForm: React.FC<SearchUsersFormProps> = ({
   userInput,

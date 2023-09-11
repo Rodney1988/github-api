@@ -1,8 +1,8 @@
 import { useSearchParams } from 'react-router-dom';
 import { Button } from '@mui/material';
 
-import * as S from './SearchUsersForm.styled';
 import { SearchUsersFormProps } from '../../types/componentPropTypes';
+import * as S from './SearchUsersForm.styled';
 
 export const SearchUsersForm: React.FC<SearchUsersFormProps> = ({
   userInput,
@@ -12,6 +12,7 @@ export const SearchUsersForm: React.FC<SearchUsersFormProps> = ({
   setSubmitted,
 }) => {
   const [, setSearchParams] = useSearchParams();
+
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setSearchParams({
@@ -19,17 +20,6 @@ export const SearchUsersForm: React.FC<SearchUsersFormProps> = ({
       followerNum: followerNum ? followerNum : '0',
     });
     setSubmitted(true);
-  };
-
-  const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
-    if (event.key === 'Enter') {
-      event.preventDefault();
-      setSearchParams({
-        searchQuery: userInput ? userInput : '',
-        followerNum: followerNum ? followerNum : '0',
-      });
-      setSubmitted(true);
-    }
   };
 
   return (
@@ -46,7 +36,7 @@ export const SearchUsersForm: React.FC<SearchUsersFormProps> = ({
         <S.NameInput
           type="text"
           onChange={(e) => setUserInput(e.target.value)}
-          onKeyDown={handleKeyDown}
+          onKeyDown={() => handleSubmit}
           aria-label="GitHub Name Input"
         />
       </S.Label>

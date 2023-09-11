@@ -3,7 +3,7 @@ import { GithubRepo, GithubUser } from './types';
 
 const octokit = new Octokit();
 
-export const getGithub = async (
+export const fetchGithubUsers = async (
   name: string | null,
   followers: string | null
 ) => {

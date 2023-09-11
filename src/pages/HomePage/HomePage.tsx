@@ -17,7 +17,7 @@ export const HomePage = () => {
   const searchValueParam = searchParams.get('searchQuery');
   const followerCountParam = searchParams.get('followerNum');
 
-  /* UseEffect in case of refreshing and the submitted state gets reset, forces
+  /* UseEffect in case of browser refreshing and the submitted state gets reset, forces
      re-fetch of users */
 
   useEffect(() => {

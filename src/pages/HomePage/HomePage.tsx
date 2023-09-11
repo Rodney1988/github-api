@@ -4,7 +4,7 @@ import { useSearchParams } from 'react-router-dom';
 import { CircularProgress } from '@mui/material';
 
 import { fetchGithubUsers } from '../../Api';
-import UserWithSuspense from '../../components/User/UserWithSuspense';
+import { UserWithSuspense } from '../../components/User/UserWithSuspense';
 import { SearchUsersForm } from '../../components/SearchUsersForm/SearchUsersForm';
 
 /* HomePage passes its state as props to SearchUsersform */

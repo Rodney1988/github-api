@@ -5,7 +5,7 @@ import { Button, CircularProgress } from '@mui/material';
 
 import { getGithub } from '../../Api';
 import UserWithSuspense from '../../components/User/UserWithSuspense';
-import { StyledFollowersInput, StyledNameInput } from './HomePage.styled';
+import * as S from './HomePage.styled';
 
 /* HomePage renders a form and the result of the form query (Github users) */
 
@@ -98,23 +98,23 @@ export const HomePage = () => {
           }}
           aria-label="Search Form"
         >
-          <label aria-label="GitHub Name Label">
+          <S.Label aria-label="GitHub Name Label">
             Name:
-            <StyledNameInput
+            <S.NameInput
               type="text"
               onChange={(e) => setInput(e.target.value)}
               onKeyDown={handleKeyDown}
               aria-label="GitHub Name Input"
             />
-          </label>
-          <label aria-label="Followers Label">
+          </S.Label>
+          <S.Label aria-label="Followers Label">
             Followers:
-            <StyledFollowersInput
+            <S.FollowersInput
               type="number"
               onChange={(e) => setFollowerNum(e.target.value)}
               aria-label="Followers Input"
-            ></StyledFollowersInput>
-          </label>
+            ></S.FollowersInput>
+          </S.Label>
           <Button
             disabled={!input}
             type="submit"

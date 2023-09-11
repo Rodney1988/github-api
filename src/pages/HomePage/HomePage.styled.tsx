@@ -1,22 +1,26 @@
 import styled from '@emotion/styled';
 import { OutlinedInput } from '@mui/material';
 
-export const StyledNameInput = styled(OutlinedInput)`
+export const NameInput = styled(OutlinedInput)`
   height: 30px;
-  margin-top: 10px;
-  margin-left: 32px;
   width: 150px;
   @media only screen and (max-width: 290px) {
     width: 120px;
   }
 `;
 
-export const StyledFollowersInput = styled(OutlinedInput)`
+export const FollowersInput = styled(OutlinedInput)`
   height: 30px;
-  margin-top: 10px;
-  margin-left: 7px;
   width: 150px;
   @media only screen and (max-width: 290px) {
     width: 120px;
   }
+`;
+
+export const Label = styled.label`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 250px;
+  padding-right: 10px;
 `;

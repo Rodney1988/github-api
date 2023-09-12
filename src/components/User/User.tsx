@@ -8,7 +8,6 @@ import Star from '@mui/icons-material/Star';
 import { getRepos } from '../../Api';
 import * as S from './User.styled';
 import { UserProp } from '../../types/componentPropTypes';
-import { GithubRepo } from '../../types/repoTypes';
 
 /* User renders each User box which is looped from its parent HomePage component */
 

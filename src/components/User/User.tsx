@@ -14,31 +14,15 @@ import { GithubRepo } from '../../types/repoTypes';
 
 const User: React.FC<UserProp> = ({ userProp }) => {
   const [isExpanded, setIsExpanded] = useState<boolean>(false);
-  const [queryIsFinished, setQueryIsFinished] = useState<boolean>(false);
 
   const {
     data: reposData,
     isLoading,
     isError,
-  } = useQuery(
-    ['userRepos', userProp.id],
-    () => {
-      const data = getRepos(userProp.repos_url);
-      return data;
-    },
-    {
-      onSuccess: () => {
-        /* this state was used to check when the user had no repositories at the end of the query */
-        setQueryIsFinished(true);
-      },
-    }
-  );
-
-  let reposDataModified = reposData || [];
-  /* In case of alternate response, so the app doesn't crash */
-  if (!Array.isArray(reposDataModified)) {
-    reposDataModified = [];
-  }
+  } = useQuery(['userRepos', userProp.id], () => {
+    const data = getRepos(userProp.repos_url);
+    return data;
+  });
 
   let arrowJSXIcon;
   let loadingPre = (
@@ -56,10 +40,9 @@ const User: React.FC<UserProp> = ({ userProp }) => {
       <pre style={{ marginLeft: '15px' }}>Error loading repositories</pre>
     );
   }
-  if (queryIsFinished) {
-    if (reposDataModified.length === 0) {
-      arrowJSXIcon = '(no repos)';
-    }
+
+  if (reposData?.length === 0) {
+    arrowJSXIcon = '(no repos)';
   }
 
   return (
@@ -73,20 +56,19 @@ const User: React.FC<UserProp> = ({ userProp }) => {
         {
           <>
             {reposData
-              ? reposDataModified.map((repo: GithubRepo) => {
-                  const starsCount = repo.stargazers_count;
-                  const repoName = repo.name;
-                  let repoDescription =
-                    repo.description || 'No description given.';
+              ? reposData.map(({ name, stargazers_count, description, id }) => {
+                  const repoNameWithFB = name || 'No Name';
+                  let repoDescriptionWithFB =
+                    description || 'No description given.';
                   if (
-                    repoDescription &&
-                    repoDescription.startsWith(':symbols:')
+                    repoDescriptionWithFB &&
+                    repoDescriptionWithFB.startsWith(':symbols:')
                   ) {
-                    repoDescription = repoDescription?.slice(9);
+                    repoDescriptionWithFB = repoDescriptionWithFB?.slice(9);
                   }
                   return (
                     <div
-                      key={repo.id}
+                      key={id}
                       style={{
                         display: 'flex',
                         justifyContent: 'center',
@@ -94,8 +76,8 @@ const User: React.FC<UserProp> = ({ userProp }) => {
                         height: '110px',
                       }}
                     >
-                      <S.RepoBox key={repo.id}>
-                        {!!starsCount && (
+                      <S.RepoBox key={id}>
+                        {!!stargazers_count && (
                           <S.StarContainer>
                             <p
                               style={{
@@ -105,7 +87,7 @@ const User: React.FC<UserProp> = ({ userProp }) => {
                                 fontSize: '13px',
                               }}
                             >
-                              {starsCount}
+                              {stargazers_count}
                             </p>
                             <Star
                               fontSize="small"
@@ -116,8 +98,10 @@ const User: React.FC<UserProp> = ({ userProp }) => {
                             />
                           </S.StarContainer>
                         )}
-                        <S.RepoTitle>{repoName}</S.RepoTitle>
-                        <S.repoDescription>{repoDescription}</S.repoDescription>
+                        <S.RepoTitle>{repoNameWithFB}</S.RepoTitle>
+                        <S.repoDescription>
+                          {repoDescriptionWithFB}
+                        </S.repoDescription>
                       </S.RepoBox>
                     </div>
                   );

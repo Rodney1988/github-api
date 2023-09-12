@@ -73,3 +73,9 @@ export const repoDescription = styled.p`
   -webkit-line-clamp: 3;
   overflow: hidden;
 `;
+
+export const ErrorP = styled.p`
+  font-family: monospace;
+  margin-left: 15px;
+  ma-width: 90%;
+`;

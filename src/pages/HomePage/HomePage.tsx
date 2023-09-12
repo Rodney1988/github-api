@@ -61,14 +61,6 @@ export const HomePage = () => {
     );
   }
 
-  if (!data && !!searchValueParam) {
-    return (
-      <pre style={{ marginLeft: '10px' }} aria-label="Error">
-        Something went wrong with the data fetching
-      </pre>
-    );
-  }
-
   let jsxResult;
   if (data?.length === 0) {
     jsxResult = (

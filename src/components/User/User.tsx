@@ -18,26 +18,28 @@ const User: React.FC<UserProp> = ({ userProp }) => {
     data: reposData,
     isLoading,
     isError,
+    error,
   } = useQuery(['userRepos', userProp.id], () => {
     const data = getRepos(userProp.repos_url);
     return data;
   });
 
   let arrowJSXIcon;
-  let loadingPre = (
-    <pre style={{ marginLeft: '15px' }}>Loading Repository...</pre>
-  );
+  let loadingJSX = <></>;
+  let errorJSX = <></>;
 
   if (isLoading) {
+    loadingJSX = (
+      <pre style={{ marginLeft: '15px' }}>Loading Repository...</pre>
+    );
     arrowJSXIcon = <CircularProgress size={20} aria-label="Loading" />;
   } else {
+    loadingJSX = <></>;
     arrowJSXIcon = isExpanded ? <UpArrowIcon /> : <DownArrowIcon />;
   }
   if (isError) {
     arrowJSXIcon = <></>;
-    loadingPre = (
-      <pre style={{ marginLeft: '15px' }}>Error loading repositories</pre>
-    );
+    errorJSX = <S.ErrorP>{`Error getting Repos - ${error}`}</S.ErrorP>;
   }
 
   if (reposData?.length === 0) {
@@ -52,60 +54,60 @@ const User: React.FC<UserProp> = ({ userProp }) => {
       </S.Head>
 
       <S.ExpandableDiv expanded={isExpanded}>
+        {loadingJSX}
+        {errorJSX}
         {
           <>
-            {reposData
-              ? reposData.map(({ name, stargazers_count, description, id }) => {
-                  const repoNameWithFB = name || 'No Name';
-                  let repoDescriptionWithFB =
-                    description || 'No description given.';
-                  if (
-                    repoDescriptionWithFB &&
-                    repoDescriptionWithFB.startsWith(':symbols:')
-                  ) {
-                    repoDescriptionWithFB = repoDescriptionWithFB?.slice(9);
-                  }
-                  return (
-                    <div
-                      key={id}
-                      style={{
-                        display: 'flex',
-                        justifyContent: 'center',
-                        margin: '15px 15px 15px 15px',
-                        height: '110px',
-                      }}
-                    >
-                      <S.RepoBox key={id}>
-                        {!!stargazers_count && (
-                          <S.StarContainer>
-                            <p
-                              style={{
-                                display: 'inline',
-                                padding: '0',
-                                margin: '0',
-                                fontSize: '13px',
-                              }}
-                            >
-                              {stargazers_count}
-                            </p>
-                            <Star
-                              fontSize="small"
-                              sx={{
-                                transform: 'translateY(2px)',
-                                height: '13px',
-                              }}
-                            />
-                          </S.StarContainer>
-                        )}
-                        <S.RepoTitle>{repoNameWithFB}</S.RepoTitle>
-                        <S.repoDescription>
-                          {repoDescriptionWithFB}
-                        </S.repoDescription>
-                      </S.RepoBox>
-                    </div>
-                  );
-                })
-              : loadingPre}
+            {reposData?.map(({ name, stargazers_count, description, id }) => {
+              const repoNameWithFB = name || 'No Name';
+              let repoDescriptionWithFB =
+                description || 'No description given.';
+              if (
+                repoDescriptionWithFB &&
+                repoDescriptionWithFB.startsWith(':symbols:')
+              ) {
+                repoDescriptionWithFB = repoDescriptionWithFB?.slice(9);
+              }
+              return (
+                <div
+                  key={id}
+                  style={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                    margin: '15px 15px 15px 15px',
+                    height: '110px',
+                  }}
+                >
+                  <S.RepoBox key={id}>
+                    {!!stargazers_count && (
+                      <S.StarContainer>
+                        <p
+                          style={{
+                            display: 'inline',
+                            padding: '0',
+                            margin: '0',
+                            fontSize: '13px',
+                          }}
+                        >
+                          {stargazers_count}
+                        </p>
+                        <Star
+                          fontSize="small"
+                          sx={{
+                            transform: 'translateY(2px)',
+                            height: '13px',
+                          }}
+                        />
+                      </S.StarContainer>
+                    )}
+                    <S.RepoTitle>{repoNameWithFB}</S.RepoTitle>
+                    <S.repoDescription>
+                      {repoDescriptionWithFB}
+                    </S.repoDescription>
+                  </S.RepoBox>
+                </div>
+              );
+            })}
           </>
         }
       </S.ExpandableDiv>

@@ -22,7 +22,7 @@ const User: React.FC<UserProp> = ({ userProp }) => {
     isError,
   } = useQuery(
     ['userRepos', userProp.id],
-    async () => {
+    () => {
       const data = getRepos(userProp.repos_url);
       return data;
     },

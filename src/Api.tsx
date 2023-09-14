@@ -15,9 +15,11 @@ export const fetchGithubUsers = async (
   return usersResponse.data.items as GithubUser[];
 };
 
-export const getRepos = async (name: string) => {
+export const getRepos = async (name: string, page: number) => {
   const response = await octokit.rest.repos.listForUser({
     username: name,
+    per_page: 2,
+    page: page,
   });
   return response.data as GithubRepo[];
 };

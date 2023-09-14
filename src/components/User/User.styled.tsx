@@ -1,4 +1,7 @@
 import styled from '@emotion/styled';
+import DownIcon from '@mui/icons-material/KeyboardDoubleArrowDown';
+import UpIcon from '@mui/icons-material/KeyboardDoubleArrowUp';
+
 import { StyledGithubUserProps } from '../../types/componentPropTypes';
 
 export const Head = styled.div`
@@ -28,7 +31,6 @@ export const GithubUser = styled.div`
   max-width: 300px;
   background: white;
   margin: 15px;
-  cursor: pointer;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   &:hover {
     background-color: #fcf9f9;
@@ -78,4 +80,12 @@ export const ErrorP = styled.p`
   font-family: monospace;
   margin-left: 15px;
   ma-width: 90%;
+`;
+
+export const UpArrowIcon = styled(UpIcon)`
+  cursor: pointer;
+`;
+
+export const DownArrowIcon = styled(DownIcon)`
+  cursor: pointer;
 `;

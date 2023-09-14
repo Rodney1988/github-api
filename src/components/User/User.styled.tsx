@@ -1,8 +1,12 @@
 import styled from '@emotion/styled';
-import DownIcon from '@mui/icons-material/KeyboardDoubleArrowDown';
-import UpIcon from '@mui/icons-material/KeyboardDoubleArrowUp';
+import DoubleArrowDown from '@mui/icons-material/KeyboardDoubleArrowDown';
+import SingleArrowUp from '@mui/icons-material/KeyboardArrowUp';
+import SingleArrowDown from '@mui/icons-material/KeyboardArrowDown';
 
-import { StyledGithubUserProps } from '../../types/componentPropTypes';
+import {
+  DownProps,
+  StyledGithubUserProps,
+} from '../../types/componentPropTypes';
 
 export const Head = styled.div`
   border: '1px solid blue';
@@ -26,7 +30,6 @@ export const RepoBox = styled.div`
   width: 265px;
   padding-left: 15px;
 `;
-
 export const GithubUser = styled.div`
   position: relative;
   max-width: 300px;
@@ -83,10 +86,19 @@ export const ErrorP = styled.p`
   ma-width: 90%;
 `;
 
-export const UpArrowIcon = styled(UpIcon)`
+export const UpArrowIcon = styled(SingleArrowUp)`
   cursor: pointer;
 `;
 
-export const DownArrowIcon = styled(DownIcon)`
+export const DownArrowIcon = styled(SingleArrowDown)`
   cursor: pointer;
+`;
+
+export const DoubleArrowDownIcon = styled(DoubleArrowDown)<DownProps>`
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  margin-left: -17.5px;
+  transform: translateY(40px);
+  display: ${({ isNotLastChild }) => (isNotLastChild ? 'none' : 'block')};
 `;

@@ -12,6 +12,7 @@ import { UserProp } from '../../types/componentPropTypes';
 
 const User: React.FC<UserProp> = ({ userProp }) => {
   const expContainerRef = useRef<HTMLDivElement | null>(null);
+  const [isCloseToBottom, setIsCloseToBottom] = useState<boolean>(false);
   const [isExpanded, setIsExpanded] = useState<boolean>(false);
 
   const {
@@ -63,7 +64,12 @@ const User: React.FC<UserProp> = ({ userProp }) => {
     if (expContainerRef.current) {
       const { scrollTop, scrollHeight, clientHeight } = expContainerRef.current;
       const isNearBottom = scrollTop + clientHeight >= scrollHeight;
-
+      const isCloseToBottom = scrollTop + clientHeight >= scrollHeight - 50;
+      if (isCloseToBottom) {
+        setIsCloseToBottom(true);
+      } else {
+        setIsCloseToBottom(false);
+      }
       if (isNearBottom) {
         fetchNextPage();
       }
@@ -152,7 +158,7 @@ const User: React.FC<UserProp> = ({ userProp }) => {
           </>
         }
       </S.ExpandableDiv>
-      {hasNextPage && isExpanded && (
+      {hasNextPage && isExpanded && isCloseToBottom && (
         <ArrowDown
           fontSize="large"
           sx={{

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { useInfiniteQuery } from 'react-query';
 import { CircularProgress } from '@mui/material';
 import Star from '@mui/icons-material/Star';
@@ -11,7 +11,7 @@ import { UserProp } from '../../types/componentPropTypes';
 /* User renders each User box which is looped from its parent HomePage component */
 
 const User: React.FC<UserProp> = ({ userProp }) => {
-  const [isAtBottom, setIsAtBottom] = useState<boolean>(false);
+  const expContainerRef = useRef<HTMLDivElement | null>(null);
   const [isExpanded, setIsExpanded] = useState<boolean>(false);
 
   const {
@@ -35,8 +35,6 @@ const User: React.FC<UserProp> = ({ userProp }) => {
     }
   );
 
-  const reposDataFlattened = reposData?.pages.flat();
-
   let arrowJSXIcon;
   let loadingJSX = <></>;
   let errorJSX = <></>;
@@ -55,22 +53,35 @@ const User: React.FC<UserProp> = ({ userProp }) => {
     errorJSX = <S.ErrorP>{`Error getting Repos - ${error}`}</S.ErrorP>;
   }
 
+  const reposDataFlattened = reposData?.pages.flat();
+
   if (reposDataFlattened?.length === 0) {
     arrowJSXIcon = '(no repos)';
   }
 
-  const handleScroll = (e: React.UIEvent<HTMLElement>) => {
-    const target = e.target as HTMLElement;
-    const isNearBottom =
-      target.scrollHeight - target.scrollTop <= target.clientHeight + 50;
-    if (isNearBottom) {
-      setIsAtBottom(true);
+  const onScroll = useCallback(() => {
+    if (expContainerRef.current) {
+      const { scrollTop, scrollHeight, clientHeight } = expContainerRef.current;
+      const isNearBottom = scrollTop + clientHeight >= scrollHeight;
+
+      if (isNearBottom) {
+        fetchNextPage();
+      }
     }
-  };
-  if (isAtBottom && hasNextPage) {
-    fetchNextPage();
-    setIsAtBottom(false);
-  }
+  }, [fetchNextPage]);
+
+  useEffect(() => {
+    const expElement = expContainerRef.current;
+
+    if (expElement) {
+      expElement.addEventListener('scroll', onScroll);
+
+      // Clean-up on unmount
+      return () => {
+        expElement.removeEventListener('scroll', onScroll);
+      };
+    }
+  }, [onScroll]);
 
   return (
     <S.GithubUser>
@@ -81,7 +92,7 @@ const User: React.FC<UserProp> = ({ userProp }) => {
         </S.IconContainer>
       </S.Head>
 
-      <S.ExpandableDiv expanded={isExpanded} onScroll={handleScroll}>
+      <S.ExpandableDiv expanded={isExpanded} ref={expContainerRef}>
         {loadingJSX}
         {errorJSX}
         {

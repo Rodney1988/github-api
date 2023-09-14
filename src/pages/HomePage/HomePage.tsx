@@ -55,8 +55,8 @@ export const HomePage = () => {
   if (isError) {
     const issue: Error | null = error as Error;
     return (
-      <pre style={{ marginLeft: '10px' }} aria-label="Error with books query">
-        Error with fetching the books query: {issue.message}
+      <pre style={{ marginLeft: '10px' }} aria-label="Error with users query">
+        Error with fetching the users query: {issue.message}
       </pre>
     );
   }

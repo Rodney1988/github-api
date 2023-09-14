@@ -28,6 +28,7 @@ export const RepoBox = styled.div`
 `;
 
 export const GithubUser = styled.div`
+  position: relative;
   max-width: 300px;
   background: white;
   margin: 15px;
@@ -39,7 +40,7 @@ export const GithubUser = styled.div`
 
 export const ExpandableDiv = styled.div<StyledGithubUserProps>`
   max-height: ${({ expanded }) => (expanded ? '258px' : '0px')};
-  overflow: scroll;
+  overflow: auto;
   transition: max-height 0.3s ease-in-out;
 `;
 

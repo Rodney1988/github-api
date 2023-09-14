@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useInfiniteQuery } from 'react-query';
 import { CircularProgress } from '@mui/material';
 import Star from '@mui/icons-material/Star';
+import ArrowDown from '@mui/icons-material/KeyboardArrowDown';
 
 import { getRepos } from '../../Api';
 import * as S from './User.styled';
@@ -10,6 +11,7 @@ import { UserProp } from '../../types/componentPropTypes';
 /* User renders each User box which is looped from its parent HomePage component */
 
 const User: React.FC<UserProp> = ({ userProp }) => {
+  const [isAtBottom, setIsAtBottom] = useState<boolean>(false);
   const [isExpanded, setIsExpanded] = useState<boolean>(false);
 
   const {
@@ -57,6 +59,19 @@ const User: React.FC<UserProp> = ({ userProp }) => {
     arrowJSXIcon = '(no repos)';
   }
 
+  const handleScroll = (e: React.UIEvent<HTMLElement>) => {
+    const target = e.target as HTMLElement;
+    const isNearBottom =
+      target.scrollHeight - target.scrollTop <= target.clientHeight + 50;
+    if (isNearBottom) {
+      setIsAtBottom(true);
+    }
+  };
+  if (isAtBottom && hasNextPage) {
+    fetchNextPage();
+    setIsAtBottom(false);
+  }
+
   return (
     <S.GithubUser>
       <S.Head>
@@ -66,7 +81,7 @@ const User: React.FC<UserProp> = ({ userProp }) => {
         </S.IconContainer>
       </S.Head>
 
-      <S.ExpandableDiv expanded={isExpanded}>
+      <S.ExpandableDiv expanded={isExpanded} onScroll={handleScroll}>
         {loadingJSX}
         {errorJSX}
         {
@@ -127,7 +142,15 @@ const User: React.FC<UserProp> = ({ userProp }) => {
         }
       </S.ExpandableDiv>
       {hasNextPage && isExpanded && (
-        <button onClick={() => fetchNextPage()}>See more</button>
+        <ArrowDown
+          fontSize="large"
+          sx={{
+            position: 'absolute',
+            bottom: 0,
+            left: '50%',
+            marginLeft: '-17.5px',
+          }}
+        />
       )}
     </S.GithubUser>
   );

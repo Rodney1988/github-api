@@ -7,7 +7,6 @@ import { StyledGithubUserProps } from '../../types/componentPropTypes';
 import { CircularProgress } from '@mui/material';
 
 export const Head = styled.div`
-  border: '1px solid blue';
   background: #b0aeae;
   height: 60px;
   width: 300px;
@@ -34,7 +33,6 @@ export const IconContainer = styled.div`
 export const RepoBox = styled.div`
   position: relative;
   background: #e0e0e0;
-  border: 1px solid blue;
   width: 95%;
   padding-left: 15px;
 `;

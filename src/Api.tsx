@@ -9,7 +9,7 @@ export const fetchGithubUsers = async (
   followers: string | null
 ) => {
   const usersResponse = await octokit.rest.search.users({
-    q: `${name}+followers:>${followers}`,
+    q: `${name}+followers:${followers}`,
     per_page: 5,
   });
   return usersResponse.data.items as GithubUser[];

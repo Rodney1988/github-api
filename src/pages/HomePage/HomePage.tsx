@@ -31,6 +31,8 @@ export const HomePage = () => {
     () => fetchGithubUsers(searchValueParam, followerCountParam),
     {
       enabled: submitted && !!searchValueParam && !!followerCountParam,
+      refetchOnWindowFocus: false,
+      retry: 0,
       onSuccess: () => {
         setUserInput('');
         setFollowerNum('');

@@ -22,6 +22,16 @@ export const SearchUsersForm: React.FC<SearchUsersFormProps> = ({
     setSubmitted(true);
   };
 
+  /* Handle follower input change to prevent negative numbers */
+  const handleFollowersChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newValue = e.target.value;
+    if (parseInt(newValue) < 0) {
+      setFollowerNum('0');
+    } else {
+      setFollowerNum(newValue);
+    }
+  };
+
   return (
     <form
       onSubmit={handleSubmit}
@@ -44,8 +54,9 @@ export const SearchUsersForm: React.FC<SearchUsersFormProps> = ({
         Followers:
         <S.FollowersInput
           type="number"
-          onChange={(e) => setFollowerNum(e.target.value)}
+          onChange={handleFollowersChange}
           aria-label="Followers Input"
+          value={followerNum}
         ></S.FollowersInput>
       </S.Label>
       <Button

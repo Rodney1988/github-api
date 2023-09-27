@@ -13,7 +13,3 @@ export interface SearchUsersFormProps {
   setFollowerNum: React.Dispatch<React.SetStateAction<string>>;
   setSubmitted: React.Dispatch<React.SetStateAction<boolean>>;
 }
-
-export interface DownProps {
-  isNotLastChild: boolean;
-}

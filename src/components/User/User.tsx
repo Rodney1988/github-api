@@ -19,6 +19,7 @@ const User: React.FC<UserProp> = ({ userProp }) => {
     hasNextPage,
     isLoading,
     isError,
+    isFetchingNextPage,
     error,
   } = useInfiniteQuery(
     ['userRepos', userProp.id],
@@ -82,7 +83,7 @@ const User: React.FC<UserProp> = ({ userProp }) => {
   }, [onScroll]);
 
   return (
-    <div>
+    <div style={{ display: 'flex', flexDirection: 'row' }}>
       <S.GithubUser>
         <S.Head>
           <S.H4 data-testid="title">Github User - {userProp.login}</S.H4>
@@ -144,11 +145,11 @@ const User: React.FC<UserProp> = ({ userProp }) => {
                         <S.repoDescription>
                           {repoDescriptionWithFB}
                         </S.repoDescription>
-                        {hasNextPage && (
-                          <S.DoubleArrowDownIcon
-                            fontSize="large"
-                            isNotLastChild={!isLastChild}
-                          />
+                        {hasNextPage && !isFetchingNextPage && isLastChild && (
+                          <S.DoubleArrowDownIcon fontSize="large" />
+                        )}
+                        {isLastChild && isFetchingNextPage && (
+                          <S.ProgressBar size={25} />
                         )}
                       </S.RepoBox>
                     </div>

@@ -3,18 +3,25 @@ import DoubleArrowDown from '@mui/icons-material/KeyboardDoubleArrowDown';
 import SingleArrowUp from '@mui/icons-material/KeyboardArrowUp';
 import SingleArrowDown from '@mui/icons-material/KeyboardArrowDown';
 
-import {
-  DownProps,
-  StyledGithubUserProps,
-} from '../../types/componentPropTypes';
+import { StyledGithubUserProps } from '../../types/componentPropTypes';
+import { CircularProgress } from '@mui/material';
 
 export const Head = styled.div`
   border: '1px solid blue';
   background: #b0aeae;
   height: 60px;
-  width: 100%;
+  width: 300px;
   display: flex;
   justify-content: space-between;
+  @media only screen and (max-width: 340px) {
+    width: 280px;
+  }
+  @media only screen and (max-width: 310px) {
+    width: 260px;
+  }
+  @media only screen and (max-width: 285px) {
+    width: 250px;
+  }
 `;
 
 export const IconContainer = styled.div`
@@ -27,7 +34,8 @@ export const IconContainer = styled.div`
 export const RepoBox = styled.div`
   position: relative;
   background: #e0e0e0;
-  width: 265px;
+  border: 1px solid blue;
+  width: 95%;
   padding-left: 15px;
 `;
 export const GithubUser = styled.div`
@@ -38,6 +46,15 @@ export const GithubUser = styled.div`
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   &:hover {
     background-color: #fcf9f9;
+  }
+  @media only screen and (max-width: 340px) {
+    width: 280px;
+  }
+  @media only screen and (max-width: 310px) {
+    width: 260px;
+  }
+  @media only screen and (max-width: 285px) {
+    width: 250px;
   }
 `;
 
@@ -94,11 +111,17 @@ export const DownArrowIcon = styled(SingleArrowDown)`
   cursor: pointer;
 `;
 
-export const DoubleArrowDownIcon = styled(DoubleArrowDown)<DownProps>`
+export const DoubleArrowDownIcon = styled(DoubleArrowDown)`
   position: absolute;
   bottom: 0;
   left: 50%;
   margin-left: -17.5px;
   transform: translateY(40px);
-  display: ${({ isNotLastChild }) => (isNotLastChild ? 'none' : 'block')};
+`;
+
+export const ProgressBar = styled(CircularProgress)`
+  position: absolute;
+  bottom: -35px;
+  left: 50%;
+  margin-left: -10px;
 `;

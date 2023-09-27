@@ -8,6 +8,12 @@ export const Instructions = () => {
       <h3>Instructions</h3>
       <div style={{ maxWidth: '500px' }}>
         <p>
+          I have been working with React-Query for a while now, so the main
+          objective of this app was to practice some deeper features of React
+          Query and try them out in this playground, such as the
+          useInfiniteQuery hook.
+        </p>
+        <p>
           In this relatively simple app, you can write down any Github username
           in the <Link to="/">home input form</Link>. Doing so should render a
           maximum of 5 user accounts. It is also possible to select users based

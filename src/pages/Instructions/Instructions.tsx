@@ -9,9 +9,10 @@ export const Instructions = () => {
       <div style={{ maxWidth: '500px' }}>
         <p>
           I have been working with React-Query for a while now, so the main
-          objective of this app was to practice some deeper features of React
-          Query and try them out in this playground, such as the
-          useInfiniteQuery hook.
+          objective of this app was to practice some deeper features of
+          React-Query and try them out in this playground. The app uses the
+          useInfiniteQuery hook to fetch the data of the users and their
+          repositories while scrolling downwards.
         </p>
         <p>
           In this relatively simple app, you can write down any Github username

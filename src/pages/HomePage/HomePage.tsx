@@ -14,23 +14,21 @@ export const HomePage = () => {
   const [followerNum, setFollowerNum] = useState<string>('0');
   const [submitted, setSubmitted] = useState<boolean>(false);
   const [searchParams] = useSearchParams();
-  const searchValueParam = searchParams.get('searchQuery');
+  const userInputParam = searchParams.get('searchQuery');
   const followerCountParam = searchParams.get('followerNum');
 
-  /* UseEffect in case of browser refreshing and the submitted state gets reset, forces
-     re-fetch of users */
+  /* UseEffect in case of browser refreshing and the submitted state gets reset, setting setSumitted to true
+    forces re-fetch of users with react-query */
 
   useEffect(() => {
-    if (!!searchValueParam && !!followerCountParam) {
-      setSubmitted(true);
-    }
-  }, [searchValueParam, followerCountParam]);
+    setSubmitted(true);
+  }, [searchParams]);
 
   const { data, isLoading, isError, error } = useQuery(
-    ['fetchGithubUsers', searchValueParam, followerCountParam],
-    () => fetchGithubUsers(searchValueParam, followerCountParam),
+    ['fetchGithubUsers', userInputParam, followerCountParam],
+    () => fetchGithubUsers(userInputParam, followerCountParam),
     {
-      enabled: submitted && !!searchValueParam && !!followerCountParam,
+      enabled: submitted && !!userInputParam && !!followerCountParam,
       refetchOnWindowFocus: false,
       retry: 0,
       onSuccess: () => {
@@ -86,8 +84,10 @@ export const HomePage = () => {
         <SearchUsersForm
           userInput={userInput}
           setUserInput={setUserInput}
+          userInputParam={userInputParam}
           followerNum={followerNum}
           setFollowerNum={setFollowerNum}
+          followerCountParam={followerCountParam}
           setSubmitted={setSubmitted}
         />
       </div>

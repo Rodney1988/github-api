@@ -3,15 +3,30 @@ import { Button } from '@mui/material';
 
 import { SearchUsersFormProps } from '../../types/componentPropTypes';
 import * as S from './SearchUsersForm.styled';
+import { useEffect } from 'react';
 
 export const SearchUsersForm: React.FC<SearchUsersFormProps> = ({
   userInput,
   setUserInput,
+  userInputParam,
   followerNum,
   setFollowerNum,
+  followerCountParam,
   setSubmitted,
 }) => {
   const [, setSearchParams] = useSearchParams();
+
+  /* UseEffect in case of browser refreshing and the input states reset, if there are params, add those params
+    to the state so that the inputs get automatically filled*/
+
+  useEffect(() => {
+    if (userInputParam) {
+      setUserInput(userInputParam);
+    }
+    if (followerCountParam) {
+      setFollowerNum(followerCountParam);
+    }
+  }, [userInputParam, setUserInput, followerCountParam, setFollowerNum]);
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -48,6 +63,7 @@ export const SearchUsersForm: React.FC<SearchUsersFormProps> = ({
           onChange={(e) => setUserInput(e.target.value)}
           onKeyDown={() => handleSubmit}
           aria-label="GitHub Name Input"
+          value={userInput}
         />
       </S.Label>
       <S.Label aria-label="Followers Label">

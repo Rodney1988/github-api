@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useQuery } from 'react-query';
 import { useSearchParams } from 'react-router-dom';
-import { CircularProgress } from '@mui/material';
+import { Alert, CircularProgress } from '@mui/material';
 
 import { fetchGithubUsers } from '../../Api';
 import { UserWithSuspense } from '../../components/User/UserWithSuspense';
@@ -55,9 +55,14 @@ export const HomePage = () => {
   if (isError) {
     const issue: Error | null = error as Error;
     return (
-      <pre style={{ marginLeft: '10px' }} aria-label="Error with users query">
-        Error with fetching the users query: {issue.message}
-      </pre>
+      <div
+        style={{ margin: '50px 0 0 10px' }}
+        aria-label="Error with users query"
+      >
+        <Alert severity="error">
+          Error with fetching the users query: {issue.message}
+        </Alert>
+      </div>
     );
   }
 
@@ -91,6 +96,7 @@ export const HomePage = () => {
           setSubmitted={setSubmitted}
         />
       </div>
+      {/* Results are mapped and inserted below */}
       <div>{jsxResult}</div>
     </div>
   );

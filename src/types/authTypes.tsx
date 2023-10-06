@@ -1,3 +1,3 @@
 export interface AuthContextType {
-  userToken: String;
+  userToken: string;
 }

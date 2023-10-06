@@ -1,25 +1,26 @@
-import { useEffect, useState } from 'react';
-import { AuthContextProps } from '../types/componentPropTypes';
-import { createContext } from 'react';
-import { AuthContextType } from '../types/authTypes';
+// import { useReducer } from 'react';
+// import { AuthContextProps } from '../types/componentPropTypes';
 
-export const AuthContext = createContext<AuthContextType | undefined>(
-  undefined
-);
+// import { AuthContextType } from '../types/authTypes';
 
-export const AuthProvider: React.FC<AuthContextProps> = ({ children }) => {
-  const [userToken, setUserToken] = useState('');
+// export const authReducer = (state: any, action: any) => {
+//   switch (action.type) {
+//     case 'UPDATE_USER_TOKEN':
+//       return { ...state, userToken: action.payload };
+//     default:
+//       return state;
+//   }
+// };
 
-  useEffect(() => {
-    const authenticatedUser = localStorage.getItem('token');
-    if (authenticatedUser) {
-      setUserToken(authenticatedUser);
-    }
-  }, []);
-
-  return (
-    <AuthContext.Provider value={{ userToken }}>
-      {children}
-    </AuthContext.Provider>
-  );
-};
+// export const AuthProvider: React.FC<AuthContextProps> = ({ children }) => {
+//   const [state, dispatch] = useReducer(authReducer, {
+//     userToken: null,
+//   });
+//   console.log('STATE---', state);
+//   return (
+//     <AuthContext.Provider value={{ ...state, dispatch }}>
+//       {children}
+//     </AuthContext.Provider>
+//   );
+// };
+export const whatever = () => {};

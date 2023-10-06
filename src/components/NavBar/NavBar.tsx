@@ -1,12 +1,14 @@
 import { useState } from 'react';
 import MenuIcon from '@mui/icons-material/Menu';
+import { useAuthContext } from '../../hooks/useAuthContext';
 
 import * as S from './NavBar.styled';
-import { useAuth } from '../../hooks/useAuth';
 
 export const NavBar = () => {
   const [isExpanded, setIsExpanded] = useState<boolean>(false);
-  const { userToken } = useAuth();
+
+  const context = useAuthContext();
+  const userExists = context?.userToken;
   return (
     <S.NavbarContainer>
       <S.Logo to="/" aria-label="Home">
@@ -23,7 +25,7 @@ export const NavBar = () => {
             Instructions
           </S.NavLinkStyled>
         </S.NavMenuItem>
-        {userToken && (
+        {userExists && (
           <S.MuiLogoutButton
             aria-label="Search Button"
             variant="contained"
@@ -58,7 +60,7 @@ export const NavBar = () => {
                   Instructions
                 </S.NavLinkStyled>
               </S.HamburgerLi>
-              {userToken && (
+              {userExists && (
                 <S.MuiLogoutButtonHambuger variant="text">
                   Logout
                 </S.MuiLogoutButtonHambuger>

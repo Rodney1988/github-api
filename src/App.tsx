@@ -5,8 +5,8 @@ import { NavBar } from './components/NavBar/NavBar';
 import { Instructions } from './pages/Instructions/Instructions';
 import { SignUp } from './pages/SignUp/SignUp';
 import { Login } from './pages/Login/Login';
-import { useAuth } from './hooks/useAuth';
 import { Navigate } from 'react-router-dom';
+import { useAuthContext } from './hooks/useAuthContext';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -15,9 +15,9 @@ const queryClient = new QueryClient({
 });
 
 function App() {
-  const { userExists } = useAuth();
+  const context = useAuthContext();
+  const userExists = context?.userToken;
 
-  console.log('userExists', userExists);
   return (
     <BrowserRouter>
       <QueryClientProvider client={queryClient}>

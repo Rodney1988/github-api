@@ -11,14 +11,11 @@ export const SignUp = () => {
   const [error, setError] = useState<string>('');
   const context = useAuthContext();
 
-  console.log('context userToken:', context?.userToken);
-
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     try {
       const response = await signUp(userEmail, userPassword);
-      console.log('finalres', response);
       localStorage.setItem('token', response.idToken);
       context?.dispatch({ type: 'SET_USER_TOKEN', payload: response.idToken });
     } catch (error) {
@@ -50,6 +47,7 @@ export const SignUp = () => {
           type="submit"
           aria-label="Search Button"
           variant="contained"
+          disabled={!userEmail || !userPassword || userPassword.length < 6}
         >
           Sign Up
         </S.SubmitButton>

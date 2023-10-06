@@ -6,7 +6,7 @@ import { useAuth } from '../../hooks/useAuth';
 
 export const NavBar = () => {
   const [isExpanded, setIsExpanded] = useState<boolean>(false);
-  const user = useAuth();
+  const { userExists } = useAuth();
   return (
     <S.NavbarContainer>
       <S.Logo to="/" aria-label="Home">
@@ -23,7 +23,7 @@ export const NavBar = () => {
             Instructions
           </S.NavLinkStyled>
         </S.NavMenuItem>
-        {user && (
+        {userExists && (
           <S.MuiLogoutButton
             aria-label="Search Button"
             variant="contained"
@@ -58,9 +58,11 @@ export const NavBar = () => {
                   Instructions
                 </S.NavLinkStyled>
               </S.HamburgerLi>
-              <S.MuiLogoutButtonHambuger variant="text">
-                Logout
-              </S.MuiLogoutButtonHambuger>
+              {userExists && (
+                <S.MuiLogoutButtonHambuger variant="text">
+                  Logout
+                </S.MuiLogoutButtonHambuger>
+              )}
             </S.HamburgerUl>
           </S.HamburgerBottom>
         )}

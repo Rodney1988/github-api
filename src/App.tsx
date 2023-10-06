@@ -15,25 +15,29 @@ const queryClient = new QueryClient({
 });
 
 function App() {
-  const user = useAuth();
+  const { userExists } = useAuth();
   return (
     <BrowserRouter>
       <QueryClientProvider client={queryClient}>
         <NavBar />
         <div style={{ marginLeft: '15px' }}>
           <Routes>
-            <Route path="/" element={user ? <HomePage /> : <SignUp />} />
+            <Route path="/" element={userExists ? <HomePage /> : <SignUp />} />
             <Route
               path="/signup"
-              element={!user ? <SignUp /> : <Navigate to="/" replace={true} />}
+              element={
+                !userExists ? <SignUp /> : <Navigate to="/" replace={true} />
+              }
             />
             <Route
               path="/login"
-              element={!user ? <Login /> : <Navigate to="/" replace={true} />}
+              element={
+                !userExists ? <Login /> : <Navigate to="/" replace={true} />
+              }
             />
             <Route
               path="/instructions"
-              element={user ? <Instructions /> : <SignUp />}
+              element={userExists ? <Instructions /> : <SignUp />}
             />
           </Routes>
         </div>

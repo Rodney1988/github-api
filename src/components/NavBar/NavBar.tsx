@@ -1,14 +1,12 @@
 import { useState } from 'react';
-
 import MenuIcon from '@mui/icons-material/Menu';
+
 import * as S from './NavBar.styled';
 import { useAuth } from '../../hooks/useAuth';
-import { Button } from '@mui/material';
 
 export const NavBar = () => {
   const [isExpanded, setIsExpanded] = useState<boolean>(false);
   const user = useAuth();
-  console.log('usernavbar', user);
   return (
     <S.NavbarContainer>
       <S.Logo to="/" aria-label="Home">
@@ -26,7 +24,7 @@ export const NavBar = () => {
           </S.NavLinkStyled>
         </S.NavMenuItem>
         {user && (
-          <Button
+          <S.MuiLogoutButton
             aria-label="Search Button"
             variant="contained"
             sx={{
@@ -39,7 +37,7 @@ export const NavBar = () => {
             }}
           >
             Logout
-          </Button>
+          </S.MuiLogoutButton>
         )}
       </S.NavMenu>
       <S.HamburgerMenu
@@ -60,6 +58,9 @@ export const NavBar = () => {
                   Instructions
                 </S.NavLinkStyled>
               </S.HamburgerLi>
+              <S.MuiLogoutButtonHambuger variant="text">
+                Logout
+              </S.MuiLogoutButtonHambuger>
             </S.HamburgerUl>
           </S.HamburgerBottom>
         )}

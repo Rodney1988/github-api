@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 import { NavLink } from 'react-router-dom';
+import { Button } from '@mui/material';
 
 export const NavbarContainer = styled.nav`
   background-color: #010409;
@@ -74,4 +75,19 @@ export const HamburgerUl = styled.ul`
 
 export const HamburgerLi = styled.li`
   margin: 12px 0;
+`;
+
+export const MuiLogoutButton = styled(Button)`
+  margin-left: 15px;
+  @media only screen and (max-width: 767px) {
+    display: none;
+  }
+`;
+
+export const MuiLogoutButtonHambuger = styled(Button)`
+  color: white;
+  transform: translateX(-6px);
+  @media only screen and (min-width: 767px) {
+    display: none;
+  }
 `;

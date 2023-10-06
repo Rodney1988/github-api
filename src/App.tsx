@@ -16,6 +16,8 @@ const queryClient = new QueryClient({
 
 function App() {
   const { userExists } = useAuth();
+
+  console.log('userExists', userExists);
   return (
     <BrowserRouter>
       <QueryClientProvider client={queryClient}>

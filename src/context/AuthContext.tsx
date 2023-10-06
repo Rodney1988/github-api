@@ -5,6 +5,8 @@ const authReducer = (state: any, action: any) => {
   switch (action.type) {
     case 'SET_USER_TOKEN':
       return { ...state, userToken: action.payload };
+    case 'LOG_OUT':
+      return { ...state, userToken: '' };
     default:
       return state;
   }

@@ -6,8 +6,13 @@ import * as S from './NavBar.styled';
 
 export const NavBar = () => {
   const [isExpanded, setIsExpanded] = useState<boolean>(false);
-
   const context = useAuthContext();
+
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    context?.dispatch({ type: 'LOG_OUT' });
+  };
+
   const userExists = context?.userToken;
   return (
     <S.NavbarContainer>
@@ -27,6 +32,7 @@ export const NavBar = () => {
         </S.NavMenuItem>
         {userExists && (
           <S.MuiLogoutButton
+            onClick={handleLogout}
             aria-label="Search Button"
             variant="contained"
             sx={{
@@ -61,7 +67,10 @@ export const NavBar = () => {
                 </S.NavLinkStyled>
               </S.HamburgerLi>
               {userExists && (
-                <S.MuiLogoutButtonHambuger variant="text">
+                <S.MuiLogoutButtonHambuger
+                  variant="text"
+                  onClick={handleLogout}
+                >
                   Logout
                 </S.MuiLogoutButtonHambuger>
               )}

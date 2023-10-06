@@ -84,18 +84,17 @@ export const HomePage = () => {
 
   return (
     <div style={{ width: '100%', height: '100%' }}>
-      <div style={{ marginLeft: '15px' }}>
-        <h3 aria-label="Search Header">Search for a profile below:</h3>
-        <SearchUsersForm
-          userInput={userInput}
-          setUserInput={setUserInput}
-          userInputParam={userInputParam}
-          followerNum={followerNum}
-          setFollowerNum={setFollowerNum}
-          followerCountParam={followerCountParam}
-          setSubmitted={setSubmitted}
-        />
-      </div>
+      <h3 aria-label="Search Header">Search for a profile below:</h3>
+      <SearchUsersForm
+        userInput={userInput}
+        setUserInput={setUserInput}
+        userInputParam={userInputParam}
+        followerNum={followerNum}
+        setFollowerNum={setFollowerNum}
+        followerCountParam={followerCountParam}
+        setSubmitted={setSubmitted}
+      />
+
       {/* Results are mapped and inserted below */}
       <div>{jsxResult}</div>
     </div>

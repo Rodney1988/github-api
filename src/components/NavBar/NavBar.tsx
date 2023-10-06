@@ -1,63 +1,69 @@
 import { useState } from 'react';
 
 import MenuIcon from '@mui/icons-material/Menu';
-import {
-  StyledLogo,
-  StyledNavLinkStyled,
-  StyledNavMenu,
-  StyledNavMenuItem,
-  StyledNavbarContainer,
-  StyledHamburgerMenu,
-  StyledHamburgerBottom,
-  StyledHamburgerUl,
-  StyledHamburgerLi,
-} from './NavBar.styled';
+import * as S from './NavBar.styled';
+import { useAuth } from '../../hooks/useAuth';
+import { Button } from '@mui/material';
 
 export const NavBar = () => {
   const [isExpanded, setIsExpanded] = useState<boolean>(false);
-
+  const user = useAuth();
+  console.log('usernavbar', user);
   return (
-    <StyledNavbarContainer>
-      <StyledLogo to="/" aria-label="Home">
+    <S.NavbarContainer>
+      <S.Logo to="/" aria-label="Home">
         Github API
-      </StyledLogo>
-      <StyledNavMenu>
-        <StyledNavMenuItem>
-          <StyledNavLinkStyled to="/" aria-label="Home">
+      </S.Logo>
+      <S.NavMenu>
+        <S.NavMenuItem>
+          <S.NavLinkStyled to="/" aria-label="Home">
             Home
-          </StyledNavLinkStyled>
-        </StyledNavMenuItem>
-        <StyledNavMenuItem>
-          <StyledNavLinkStyled to="/instructions" aria-label="Instructions">
+          </S.NavLinkStyled>
+        </S.NavMenuItem>
+        <S.NavMenuItem>
+          <S.NavLinkStyled to="/instructions" aria-label="Instructions">
             Instructions
-          </StyledNavLinkStyled>
-        </StyledNavMenuItem>
-      </StyledNavMenu>
-      <StyledHamburgerMenu
+          </S.NavLinkStyled>
+        </S.NavMenuItem>
+        {user && (
+          <Button
+            aria-label="Search Button"
+            variant="contained"
+            sx={{
+              background: '#eaeaea',
+              color: 'black',
+              '&:hover': {
+                background: '#3D4145',
+                color: 'white',
+              },
+            }}
+          >
+            Logout
+          </Button>
+        )}
+      </S.NavMenu>
+      <S.HamburgerMenu
         onClick={() => setIsExpanded(!isExpanded)}
         data-testid="hamburger-button"
       >
         <MenuIcon sx={{ color: '#f2f2f2' }} />
         {isExpanded && (
-          <StyledHamburgerBottom data-testid="expanded-section">
-            <StyledHamburgerUl>
-              <StyledHamburgerLi>
-                <StyledNavLinkStyled to="/" aria-label="Home">
+          <S.HamburgerBottom data-testid="expanded-section">
+            <S.HamburgerUl>
+              <S.HamburgerLi>
+                <S.NavLinkStyled to="/" aria-label="Home">
                   Home
-                </StyledNavLinkStyled>
-              </StyledHamburgerLi>
-              <StyledHamburgerLi>
-                <StyledNavLinkStyled
-                  to="/instructions"
-                  aria-label="Instructions"
-                >
+                </S.NavLinkStyled>
+              </S.HamburgerLi>
+              <S.HamburgerLi>
+                <S.NavLinkStyled to="/instructions" aria-label="Instructions">
                   Instructions
-                </StyledNavLinkStyled>
-              </StyledHamburgerLi>
-            </StyledHamburgerUl>
-          </StyledHamburgerBottom>
+                </S.NavLinkStyled>
+              </S.HamburgerLi>
+            </S.HamburgerUl>
+          </S.HamburgerBottom>
         )}
-      </StyledHamburgerMenu>
-    </StyledNavbarContainer>
+      </S.HamburgerMenu>
+    </S.NavbarContainer>
   );
 };

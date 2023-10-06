@@ -1,3 +1,4 @@
+import { ReactNode } from 'react';
 import { GithubUser } from './userTypes';
 
 export interface StyledGithubUserProps {
@@ -14,4 +15,7 @@ export interface SearchUsersFormProps {
   setFollowerNum: React.Dispatch<React.SetStateAction<string>>;
   followerCountParam: string | null;
   setSubmitted: React.Dispatch<React.SetStateAction<boolean>>;
+}
+export interface AuthContextProps {
+  children: ReactNode;
 }

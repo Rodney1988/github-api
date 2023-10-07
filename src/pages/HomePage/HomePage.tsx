@@ -83,8 +83,8 @@ export const HomePage = () => {
 
   return (
     <div style={{ width: '100%', height: '100%' }}>
-      <h1 aria-label="Welcome to the Homepage GitHub API">
-        Welcome to the Github API
+      <h1 aria-label="GitHub API Title">
+        Welcome to another rendition of the Github API!
       </h1>
       <h3 aria-label="Search Header">Search for a profile below:</h3>
       <SearchUsersForm

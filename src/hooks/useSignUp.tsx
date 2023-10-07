@@ -16,7 +16,6 @@ export const useSignUp = () => {
     if (!response.ok) {
       if (response.status === 400) {
         setError(`Error 400: ${responseData.error.message}`);
-        throw new Error();
       } else {
         setError('Unknown error occurred');
       }

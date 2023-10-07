@@ -37,10 +37,7 @@ function App() {
                 !userExists ? <Login /> : <Navigate to="/" replace={true} />
               }
             />
-            <Route
-              path="/instructions"
-              element={userExists ? <Instructions /> : <SignUp />}
-            />
+            <Route path="/instructions" element={<Instructions />} />
           </Routes>
         </div>
       </QueryClientProvider>

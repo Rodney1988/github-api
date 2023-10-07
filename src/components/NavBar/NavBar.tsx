@@ -21,9 +21,11 @@ export const NavBar = () => {
       </S.Logo>
       <S.NavMenu>
         <S.NavMenuItem>
-          <S.NavLinkStyled to="/" aria-label="Home">
-            Home
-          </S.NavLinkStyled>
+          {userExists && (
+            <S.NavLinkStyled to="/" aria-label="Home">
+              Home
+            </S.NavLinkStyled>
+          )}
         </S.NavMenuItem>
         <S.NavMenuItem>
           <S.NavLinkStyled to="/instructions" aria-label="Instructions">

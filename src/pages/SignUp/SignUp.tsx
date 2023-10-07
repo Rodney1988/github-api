@@ -4,6 +4,7 @@ import { Alert, CircularProgress } from '@mui/material';
 import * as S from './SignUp.styled';
 import { useAuthContext } from '../../hooks/useAuthContext';
 import { useSignUp } from '../../hooks/useSignUp';
+import { Link } from 'react-router-dom';
 
 export const SignUp = () => {
   const [userEmail, setUserEmail] = useState<string>('');
@@ -44,11 +45,14 @@ export const SignUp = () => {
       >
         <S.Label aria-label="User Email Label">
           Email:
-          <input type="email" onChange={(e) => setUserEmail(e.target.value)} />
+          <S.InputField
+            type="email"
+            onChange={(e) => setUserEmail(e.target.value)}
+          />
         </S.Label>
         <S.Label aria-label="User Password Label">
           Password:
-          <input
+          <S.InputField
             type="password"
             onChange={(e) => setUserPassword(e.target.value)}
           />
@@ -63,6 +67,9 @@ export const SignUp = () => {
         </S.SubmitButton>
       </form>
       {error && <Alert severity="error">{error}</Alert>}
+      <S.ExtraTextDiv>
+        <Link to={'/login'}>Already have an account?</Link>
+      </S.ExtraTextDiv>
     </div>
   );
 };

@@ -58,7 +58,7 @@ export const SearchUsersForm: React.FC<SearchUsersFormProps> = ({
     >
       <S.Label aria-label="GitHub Name Label">
         Name:
-        <S.NameInput
+        <S.InputField
           type="text"
           onChange={(e) => setUserInput(e.target.value)}
           onKeyDown={() => handleSubmit}
@@ -68,12 +68,12 @@ export const SearchUsersForm: React.FC<SearchUsersFormProps> = ({
       </S.Label>
       <S.Label aria-label="Followers Label">
         Followers:
-        <S.FollowersInput
+        <S.InputField
           type="number"
           onChange={handleFollowersChange}
           aria-label="Followers Input"
           value={followerNum}
-        ></S.FollowersInput>
+        ></S.InputField>
       </S.Label>
       <Button
         disabled={!userInput}

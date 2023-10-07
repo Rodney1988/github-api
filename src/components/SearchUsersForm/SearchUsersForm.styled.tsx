@@ -1,15 +1,7 @@
 import styled from '@emotion/styled';
 import { OutlinedInput } from '@mui/material';
 
-export const NameInput = styled(OutlinedInput)`
-  height: 30px;
-  width: 150px;
-  @media only screen and (max-width: 290px) {
-    width: 120px;
-  }
-`;
-
-export const FollowersInput = styled(OutlinedInput)`
+export const InputField = styled(OutlinedInput)`
   height: 30px;
   width: 150px;
   @media only screen and (max-width: 290px) {

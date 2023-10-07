@@ -6,6 +6,7 @@ import { GithubRepo } from '../types/repoTypes';
 
 export const useOctokit = () => {
   const [gitHubUsersError, setGitHubUsersError] = useState<string>('');
+  const [gitHubReposError, setGitHubReposError] = useState<string>('');
 
   const octokit = new Octokit();
 
@@ -27,13 +28,20 @@ export const useOctokit = () => {
   };
 
   const getRepos = async (name: string, page: number) => {
-    const response = await octokit.rest.repos.listForUser({
-      username: name,
-      per_page: 2,
-      page: page,
-    });
-    return response.data as GithubRepo[];
+    try {
+      const response = await octokit.rest.repos.listForUser({
+        username: name,
+        per_page: 2,
+        page: page,
+      });
+      return response.data as GithubRepo[];
+    } catch (error) {
+      if (error instanceof Error) {
+        setGitHubReposError(error.message);
+      }
+      return [] as GithubRepo[];
+    }
   };
 
-  return { fetchGithubUsers, gitHubUsersError, getRepos };
+  return { fetchGithubUsers, gitHubUsersError, getRepos, gitHubReposError };
 };

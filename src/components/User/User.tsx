@@ -10,7 +10,7 @@ import { useOctokit } from '../../hooks/useOctokit';
 /* User renders each User box which is looped from its parent HomePage component */
 
 const User: React.FC<UserProp> = ({ userProp }) => {
-  const { getRepos } = useOctokit();
+  const { getRepos, gitHubReposError } = useOctokit();
   const expContainerRef = useRef<HTMLDivElement | null>(null);
   const [isExpanded, setIsExpanded] = useState<boolean>(false);
 
@@ -21,7 +21,6 @@ const User: React.FC<UserProp> = ({ userProp }) => {
     isLoading,
     isError,
     isFetchingNextPage,
-    error,
   } = useInfiniteQuery(
     ['userRepos', userProp.id],
     ({ pageParam = 1 }) => getRepos(userProp.login, pageParam),
@@ -51,7 +50,9 @@ const User: React.FC<UserProp> = ({ userProp }) => {
   }
   if (isError) {
     arrowJSXIcon = <></>;
-    errorJSX = <S.ErrorP>{`Error getting Repos - ${error}`}</S.ErrorP>;
+    errorJSX = (
+      <S.ErrorP>{`Error getting Repos - ${gitHubReposError}`}</S.ErrorP>
+    );
   }
 
   const reposDataFlattened = reposData?.pages.flat();

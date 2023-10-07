@@ -8,9 +8,10 @@ export const Instructions = () => {
       <h3>Instructions</h3>
       <div style={{ maxWidth: '500px' }}>
         <p>
-          I have been working with React-Query for a while now, so the main
-          objective of this app was to practice some deeper features of
-          React-Query and try them out in this playground. The app uses the
+          I have been working with React-Query and some other technologies for a
+          while now, so the main objective of this app was to continue
+          practicing and staying updated by trying such features and
+          technologies in this playground. An example is that the app uses the
           useInfiniteQuery hook to fetch the data of the users and their
           repositories while scrolling downwards.
         </p>

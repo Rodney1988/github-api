@@ -1,10 +1,10 @@
 import { useState } from 'react';
 
-export const useSignUp = () => {
+export const useLogin = () => {
   const [isLoading, setIsloading] = useState<boolean>(false);
 
-  const signUp = async (email: string, password: string) => {
-    const url = `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${process.env.REACT_APP_FIREBASE_API_KEY}`;
+  const login = async (email: string, password: string) => {
+    const url = `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${process.env.REACT_APP_FIREBASE_API_KEY}`;
 
     setIsloading(true);
     const response = await fetch(url, {
@@ -16,12 +16,12 @@ export const useSignUp = () => {
     const responseData = await response.json();
     if (!response.ok) {
       throw new Error(
-        `Sign-up failed with an error code ${responseData.error.code}, ${responseData.error.message}.`
+        `Log In failed with an error code ${responseData.error.code}, ${responseData.error.message}`
       );
     }
 
     return responseData;
   };
 
-  return { signUp, isLoading };
+  return { login, isLoading };
 };

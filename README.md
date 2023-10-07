@@ -1,6 +1,6 @@
 # Github API Summary
 
-An API built with React-Query V. 3 to deep dive on some React-Query capabilites.
+An API built with React-Query V. 3 to deep dive on some React-Query capabilites and other features as well.
 Thi simple application connects to the [Github API](https://developer.github.com/v3/) and uses Github's Octokit API library to query for users, and additionally also provides the user's reposotitories.
 
 The application consists of an SPA of two page components, a HomePage and an Instructions page.

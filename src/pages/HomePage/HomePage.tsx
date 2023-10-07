@@ -3,13 +3,15 @@ import { useQuery } from 'react-query';
 import { useSearchParams } from 'react-router-dom';
 import { Alert, CircularProgress } from '@mui/material';
 
-import { fetchGithubUsers } from '../../Api';
+// import { fetchGithubUsers } from '../../Api';
 import { UserWithSuspense } from '../../components/User/UserWithSuspense';
 import { SearchUsersForm } from '../../components/SearchUsersForm/SearchUsersForm';
+import { useOctokit } from '../../hooks/useOctokit';
 
 /* HomePage passes its state as props to SearchUsersform */
 
 export const HomePage = () => {
+  const { fetchGithubUsers, gitHubUsersError } = useOctokit();
   const [userInput, setUserInput] = useState<string>('');
   const [followerNum, setFollowerNum] = useState<string>('0');
   const [submitted, setSubmitted] = useState<boolean>(false);
@@ -24,7 +26,7 @@ export const HomePage = () => {
     setSubmitted(true);
   }, [searchParams]);
 
-  const { data, isLoading, isError, error } = useQuery(
+  const { data, isLoading, isError } = useQuery(
     ['fetchGithubUsers', userInputParam, followerCountParam],
     () => fetchGithubUsers(userInputParam, followerCountParam),
     {
@@ -53,15 +55,12 @@ export const HomePage = () => {
   }
 
   if (isError) {
-    const issue: Error | null = error as Error;
     return (
       <div
         style={{ margin: '50px 0 0 10px' }}
         aria-label="Error with users query"
       >
-        <Alert severity="error">
-          Error with fetching the users query: {issue.message}
-        </Alert>
+        <Alert severity="error">Error fetching users: {gitHubUsersError}</Alert>
       </div>
     );
   }

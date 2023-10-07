@@ -3,13 +3,14 @@ import { useInfiniteQuery } from 'react-query';
 import { CircularProgress } from '@mui/material';
 import Star from '@mui/icons-material/Star';
 
-import { getRepos } from '../../Api';
 import * as S from './User.styled';
 import { UserProp } from '../../types/componentPropTypes';
+import { useOctokit } from '../../hooks/useOctokit';
 
 /* User renders each User box which is looped from its parent HomePage component */
 
 const User: React.FC<UserProp> = ({ userProp }) => {
+  const { getRepos } = useOctokit();
   const expContainerRef = useRef<HTMLDivElement | null>(null);
   const [isExpanded, setIsExpanded] = useState<boolean>(false);
 

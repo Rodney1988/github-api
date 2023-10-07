@@ -1,28 +1,22 @@
 import { useState } from 'react';
 import { Alert } from '@mui/material';
 
-import { signUp } from '../../Api';
 import * as S from './SignUp.styled';
 import { useAuthContext } from '../../hooks/useAuthContext';
+import { useSignUp } from '../../hooks/useSignUp';
 
 export const SignUp = () => {
   const [userEmail, setUserEmail] = useState<string>('');
   const [userPassword, setUserPassword] = useState<string>('');
-  const [error, setError] = useState<string>('');
+  const { error, signUp } = useSignUp();
+
   const context = useAuthContext();
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-
-    try {
-      const response = await signUp(userEmail, userPassword);
-      localStorage.setItem('token', response.idToken);
-      context?.dispatch({ type: 'SET_USER_TOKEN', payload: response.idToken });
-    } catch (error) {
-      if (error instanceof Error) {
-        setError(error.message);
-      }
-    }
+    const response = await signUp(userEmail, userPassword);
+    localStorage.setItem('token', response.idToken);
+    context?.dispatch({ type: 'SET_USER_TOKEN', payload: response.idToken });
   };
 
   return (

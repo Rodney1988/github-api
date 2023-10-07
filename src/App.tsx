@@ -24,7 +24,16 @@ function App() {
         <NavBar />
         <div style={{ marginLeft: '15px' }}>
           <Routes>
-            <Route path="/" element={userExists ? <HomePage /> : <SignUp />} />
+            <Route
+              path="/"
+              element={
+                userExists ? (
+                  <HomePage />
+                ) : (
+                  <Navigate to="/signup" replace={true} />
+                )
+              }
+            />
             <Route
               path="/signup"
               element={

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Alert } from '@mui/material';
+import { Alert, CircularProgress } from '@mui/material';
 
 import * as S from './SignUp.styled';
 import { useAuthContext } from '../../hooks/useAuthContext';
@@ -8,16 +8,32 @@ import { useSignUp } from '../../hooks/useSignUp';
 export const SignUp = () => {
   const [userEmail, setUserEmail] = useState<string>('');
   const [userPassword, setUserPassword] = useState<string>('');
-  const { error, signUp } = useSignUp();
+  const [error, setError] = useState<string>('');
+  const { signUp, isLoading } = useSignUp();
 
   const context = useAuthContext();
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const response = await signUp(userEmail, userPassword);
-    localStorage.setItem('token', response.idToken);
-    context?.dispatch({ type: 'SET_USER_TOKEN', payload: response.idToken });
+    try {
+      const response = await signUp(userEmail, userPassword);
+      if (!isLoading) {
+        localStorage.setItem('token', response.idToken);
+        context?.dispatch({
+          type: 'SET_USER_TOKEN',
+          payload: response.idToken,
+        });
+      }
+    } catch (error) {
+      if (error instanceof Error) {
+        setError(error.message);
+      }
+    }
   };
+
+  if (isLoading) {
+    return <CircularProgress />;
+  }
 
   return (
     <div>

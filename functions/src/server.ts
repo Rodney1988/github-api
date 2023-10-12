@@ -3,12 +3,14 @@ import { Request, Response } from 'express';
 
 const express = require('express');
 const admin = require('firebase-admin');
-const app = express();
+const cors = require('cors')({ origin: true });
 const jwt = require('jsonwebtoken');
+
+const app = express();
 
 admin.initializeApp();
 
-app.post('/signup', async (req: Request, res: Response) => {
+app.post('/signup', cors, async (req: Request, res: Response) => {
   const { email, password } = req.body;
 
   if (!email || !password) {

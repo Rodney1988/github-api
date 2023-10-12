@@ -18,7 +18,7 @@ export const SignUp = () => {
     event.preventDefault();
     try {
       const response = await signUp(userEmail, userPassword);
-      if (!isLoading) {
+      if (!isLoading && response) {
         localStorage.setItem('token', response.customToken);
         context?.dispatch({
           type: 'SET_USER_TOKEN',
@@ -35,7 +35,18 @@ export const SignUp = () => {
   };
 
   if (isLoading) {
-    return <CircularProgress />;
+    return (
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          height: '300px',
+        }}
+      >
+        <CircularProgress />
+      </div>
+    );
   }
 
   return (

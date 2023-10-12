@@ -14,7 +14,6 @@ export const useSignUp = () => {
         headers: {
           'Content-Type': 'application/json',
         },
-        mode: 'no-cors',
         body: JSON.stringify({ email, password, returnSecureToken: true }),
       });
       const responseData = await response.json();

@@ -5,13 +5,11 @@ const express = require('express');
 const admin = require('firebase-admin');
 const app = express();
 const jwt = require('jsonwebtoken');
-const { defineString } = require('firebase-functions/params');
 
 admin.initializeApp();
 
 app.post('/signup', async (req: Request, res: Response) => {
   const { email, password } = req.body;
-  const tokenKey = defineString(process.env.TOKEN_KEY);
 
   if (!email || !password) {
     res.status(400).send('Email and password are required');
@@ -24,7 +22,7 @@ app.post('/signup', async (req: Request, res: Response) => {
       disabled: false,
     });
     const userId = userResponse.uid;
-    const customToken = jwt.sign({ uid: userId }, tokenKey);
+    const customToken = jwt.sign({ uid: userId }, process.env.TOKEN_KEY);
 
     res.json({ ...userResponse, customToken });
   } catch (error: unknown) {

@@ -19,15 +19,17 @@ export const SignUp = () => {
     try {
       const response = await signUp(userEmail, userPassword);
       if (!isLoading) {
-        localStorage.setItem('token', response.idToken);
+        localStorage.setItem('token', response.customToken);
         context?.dispatch({
           type: 'SET_USER_TOKEN',
-          payload: response.idToken,
+          payload: response.customToken,
         });
       }
     } catch (error) {
       if (error instanceof Error) {
         setError(error.message);
+      } else {
+        setError('Something went wrong signing up');
       }
     }
   };

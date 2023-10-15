@@ -35,6 +35,4 @@ app.post('/signup', async (req: Request, res: Response) => {
   }
 });
 
-/* Setting cors to true removed the CORS error */
-
-exports.nodeApi = onRequest({ cors: true }, app);
+exports.nodeApi = onRequest(app);

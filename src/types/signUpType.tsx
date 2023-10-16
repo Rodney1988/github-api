@@ -1,22 +1,43 @@
 export interface SignUpResponse {
+  user: User;
+  providerId: any;
+  _tokenResponse: TokenResponse;
+  operationType: string;
+}
+
+export interface User {
   uid: string;
   email: string;
   emailVerified: boolean;
-  disabled: boolean;
-  metadata: Metadata;
+  isAnonymous: boolean;
   providerData: ProviderDaum[];
-  tokensValidAfterTime: string;
-  customToken: string;
-}
-
-export interface Metadata {
-  lastSignInTime: any;
-  creationTime: string;
-  lastRefreshTime: any;
+  stsTokenManager: StsTokenManager;
+  createdAt: string;
+  lastLoginAt: string;
+  apiKey: string;
+  appName: string;
 }
 
 export interface ProviderDaum {
-  uid: string;
-  email: string;
   providerId: string;
+  uid: string;
+  displayName: any;
+  email: string;
+  phoneNumber: any;
+  photoURL: any;
+}
+
+export interface StsTokenManager {
+  refreshToken: string;
+  accessToken: string;
+  expirationTime: number;
+}
+
+export interface TokenResponse {
+  kind: string;
+  idToken: string;
+  email: string;
+  refreshToken: string;
+  expiresIn: string;
+  localId: string;
 }

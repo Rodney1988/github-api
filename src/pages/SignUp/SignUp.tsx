@@ -19,10 +19,11 @@ export const SignUp = () => {
     try {
       const response = await signUp(userEmail, userPassword);
       if (!isLoading && response) {
-        localStorage.setItem('token', response.customToken);
+        const idToken = response._tokenResponse.idToken;
+        localStorage.setItem('token', idToken);
         context?.dispatch({
           type: 'SET_USER_TOKEN',
-          payload: response.customToken,
+          payload: idToken,
         });
       }
     } catch (error) {

@@ -1,13 +1,17 @@
+import { firebaseConfig } from '../firebase/config';
+
 import { onRequest } from 'firebase-functions/v2/https';
 import { Request, Response } from 'express';
-
+import { initializeApp } from 'firebase/app';
+import { createUserWithEmailAndPassword, getAuth } from 'firebase/auth';
 const express = require('express');
-const admin = require('firebase-admin');
-const jwt = require('jsonwebtoken');
+const cors = require('cors');
+
+initializeApp(firebaseConfig);
+const auth = getAuth();
 
 const app = express();
-
-admin.initializeApp();
+app.use(cors());
 
 app.post('/signup', async (req: Request, res: Response) => {
   const { email, password } = req.body;
@@ -15,17 +19,14 @@ app.post('/signup', async (req: Request, res: Response) => {
   if (!email || !password) {
     res.status(400).send('Email and password are required');
   }
-  try {
-    const userResponse = await admin.auth().createUser({
-      email,
-      password,
-      emailVerified: false,
-      disabled: false,
-    });
-    const userId = userResponse.uid;
-    const customToken = jwt.sign({ uid: userId }, process.env.TOKEN_KEY);
 
-    res.json({ ...userResponse, customToken });
+  try {
+    const userResponse = await createUserWithEmailAndPassword(
+      auth,
+      email,
+      password
+    );
+    res.json({ ...userResponse });
   } catch (error: unknown) {
     if (error instanceof Error) {
       res.status(400).send(error.message);

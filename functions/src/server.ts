@@ -1,12 +1,19 @@
-import { firebaseConfig } from '../firebase/config';
-
 import { onRequest } from 'firebase-functions/v2/https';
 import { Request, Response } from 'express';
 import { initializeApp } from 'firebase/app';
-import { createUserWithEmailAndPassword, getAuth } from 'firebase/auth';
+import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
+
 const express = require('express');
 const cors = require('cors');
 
+const firebaseConfig = {
+  apiKey: process.env.API_KEY_FIREBASE || 'mock_key',
+  authDomain: process.env.AUTH_DOMAIN,
+  projectId: process.env.PROJECT_ID,
+  storageBucket: process.env.STORAGE_BUCKET,
+  messagingSenderId: process.env.MESSAGING_SENDER_ID,
+  appId: process.env.APP_ID,
+};
 initializeApp(firebaseConfig);
 const auth = getAuth();
 
@@ -26,7 +33,7 @@ app.post('/signup', async (req: Request, res: Response) => {
       email,
       password
     );
-    res.json({ ...userResponse });
+    res.json(userResponse);
   } catch (error: unknown) {
     if (error instanceof Error) {
       res.status(400).send(error.message);

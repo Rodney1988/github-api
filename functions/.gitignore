@@ -8,11 +8,5 @@ typings/
 # Node.js dependency directory
 node_modules/
 
-# env  
+#env
 .env
-
-# serviceAccountKey     
-serviceAccountKey.json
-
-#firebase config
-config.ts

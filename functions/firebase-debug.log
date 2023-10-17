@@ -1,37 +1,37 @@
-[debug] [2023-10-17T09:40:08.547Z] ----------------------------------------------------------------------
-[debug] [2023-10-17T09:40:08.547Z] Command:       /Users/rodrigowahl/.nvm/versions/node/v16.20.1/bin/node /Users/rodrigowahl/.nvm/versions/node/v16.20.1/bin/firebase emulators:start --only functions
-[debug] [2023-10-17T09:40:08.548Z] CLI Version:   12.6.2
-[debug] [2023-10-17T09:40:08.548Z] Platform:      darwin
-[debug] [2023-10-17T09:40:08.548Z] Node Version:  v16.20.1
-[debug] [2023-10-17T09:40:08.549Z] Time:          Tue Oct 17 2023 12:40:08 GMT+0300 (Eastern European Summer Time)
-[debug] [2023-10-17T09:40:08.549Z] ----------------------------------------------------------------------
+[debug] [2023-10-17T11:24:14.240Z] ----------------------------------------------------------------------
+[debug] [2023-10-17T11:24:14.241Z] Command:       /Users/rodrigowahl/.nvm/versions/node/v16.20.1/bin/node /Users/rodrigowahl/.nvm/versions/node/v16.20.1/bin/firebase emulators:start --only functions
+[debug] [2023-10-17T11:24:14.241Z] CLI Version:   12.6.2
+[debug] [2023-10-17T11:24:14.242Z] Platform:      darwin
+[debug] [2023-10-17T11:24:14.242Z] Node Version:  v16.20.1
+[debug] [2023-10-17T11:24:14.242Z] Time:          Tue Oct 17 2023 14:24:14 GMT+0300 (Eastern European Summer Time)
+[debug] [2023-10-17T11:24:14.242Z] ----------------------------------------------------------------------
 [debug] 
-[debug] [2023-10-17T09:40:08.579Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2023-10-17T09:40:08.580Z] > authorizing via signed-in user (lwahlnayar@gmail.com)
+[debug] [2023-10-17T11:24:14.272Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-10-17T11:24:14.272Z] > authorizing via signed-in user (lwahlnayar@gmail.com)
 [info] i  emulators: Starting emulators: functions {"metadata":{"emulator":{"name":"hub"},"message":"Starting emulators: functions"}}
-[debug] [2023-10-17T09:40:08.839Z] [logging] Logging Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
-[debug] [2023-10-17T09:40:08.840Z] assigned listening specs for emulators {"user":{"hub":[{"address":"127.0.0.1","family":"IPv4","port":4400},{"address":"::1","family":"IPv6","port":4400}],"ui":[{"address":"127.0.0.1","family":"IPv4","port":4000},{"address":"::1","family":"IPv6","port":4000}],"logging":[{"address":"127.0.0.1","family":"IPv4","port":4500}]},"metadata":{"message":"assigned listening specs for emulators"}}
-[debug] [2023-10-17T09:40:08.844Z] [hub] writing locator at /var/folders/km/14mvmpyx36ldm0ksw07w3skr0000gn/T/hub-github-api-317c6.json
-[debug] [2023-10-17T09:40:09.014Z] [functions] Functions Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
-[debug] [2023-10-17T09:40:09.014Z] [eventarc] Eventarc Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
-[debug] [2023-10-17T09:40:09.014Z] late-assigned ports for functions and eventarc emulators {"user":{"hub":[{"address":"127.0.0.1","family":"IPv4","port":4400},{"address":"::1","family":"IPv6","port":4400}],"ui":[{"address":"127.0.0.1","family":"IPv4","port":4000},{"address":"::1","family":"IPv6","port":4000}],"logging":[{"address":"127.0.0.1","family":"IPv4","port":4500}],"functions":[{"address":"127.0.0.1","family":"IPv4","port":5001}],"eventarc":[{"address":"127.0.0.1","family":"IPv4","port":9299}]},"metadata":{"message":"late-assigned ports for functions and eventarc emulators"}}
+[debug] [2023-10-17T11:24:14.518Z] [logging] Logging Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2023-10-17T11:24:14.518Z] assigned listening specs for emulators {"user":{"hub":[{"address":"127.0.0.1","family":"IPv4","port":4400},{"address":"::1","family":"IPv6","port":4400}],"ui":[{"address":"127.0.0.1","family":"IPv4","port":4000},{"address":"::1","family":"IPv6","port":4000}],"logging":[{"address":"127.0.0.1","family":"IPv4","port":4500}]},"metadata":{"message":"assigned listening specs for emulators"}}
+[debug] [2023-10-17T11:24:14.523Z] [hub] writing locator at /var/folders/km/14mvmpyx36ldm0ksw07w3skr0000gn/T/hub-github-api-317c6.json
+[debug] [2023-10-17T11:24:14.685Z] [functions] Functions Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2023-10-17T11:24:14.686Z] [eventarc] Eventarc Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2023-10-17T11:24:14.686Z] late-assigned ports for functions and eventarc emulators {"user":{"hub":[{"address":"127.0.0.1","family":"IPv4","port":4400},{"address":"::1","family":"IPv6","port":4400}],"ui":[{"address":"127.0.0.1","family":"IPv4","port":4000},{"address":"::1","family":"IPv6","port":4000}],"logging":[{"address":"127.0.0.1","family":"IPv4","port":4500}],"functions":[{"address":"127.0.0.1","family":"IPv4","port":5001}],"eventarc":[{"address":"127.0.0.1","family":"IPv4","port":9299}]},"metadata":{"message":"late-assigned ports for functions and eventarc emulators"}}
 [warn] ⚠  functions: The following emulators are not running, calls to these services from the Functions emulator will affect production: auth, firestore, database, hosting, pubsub, storage {"metadata":{"emulator":{"name":"functions"},"message":"The following emulators are not running, calls to these services from the Functions emulator will affect production: \u001b[1mauth, firestore, database, hosting, pubsub, storage\u001b[22m"}}
-[debug] [2023-10-17T09:40:09.015Z] defaultcredentials: writing to file /Users/rodrigowahl/.config/firebase/lwahlnayar_gmail_com_application_default_credentials.json
-[debug] [2023-10-17T09:40:09.019Z] Setting GAC to /Users/rodrigowahl/.config/firebase/lwahlnayar_gmail_com_application_default_credentials.json {"metadata":{"emulator":{"name":"functions"},"message":"Setting GAC to /Users/rodrigowahl/.config/firebase/lwahlnayar_gmail_com_application_default_credentials.json"}}
-[debug] [2023-10-17T09:40:09.020Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/github-api-317c6/adminSdkConfig [none]
-[debug] [2023-10-17T09:40:09.717Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/github-api-317c6/adminSdkConfig 200
-[debug] [2023-10-17T09:40:09.718Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/github-api-317c6/adminSdkConfig {"projectId":"github-api-317c6","storageBucket":"github-api-317c6.appspot.com"}
-[debug] [2023-10-17T09:40:09.731Z] Ignoring unsupported arg: auto_download {"metadata":{"emulator":{"name":"ui"},"message":"Ignoring unsupported arg: auto_download"}}
-[debug] [2023-10-17T09:40:09.731Z] Ignoring unsupported arg: port {"metadata":{"emulator":{"name":"ui"},"message":"Ignoring unsupported arg: port"}}
-[debug] [2023-10-17T09:40:09.731Z] Starting Emulator UI with command {"binary":"node","args":["/Users/rodrigowahl/.cache/firebase/emulators/ui-v1.11.7/server/server.js"],"optionalArgs":[],"joinArgs":false} {"metadata":{"emulator":{"name":"ui"},"message":"Starting Emulator UI with command {\"binary\":\"node\",\"args\":[\"/Users/rodrigowahl/.cache/firebase/emulators/ui-v1.11.7/server/server.js\"],\"optionalArgs\":[],\"joinArgs\":false}"}}
+[debug] [2023-10-17T11:24:14.687Z] defaultcredentials: writing to file /Users/rodrigowahl/.config/firebase/lwahlnayar_gmail_com_application_default_credentials.json
+[debug] [2023-10-17T11:24:14.690Z] Setting GAC to /Users/rodrigowahl/.config/firebase/lwahlnayar_gmail_com_application_default_credentials.json {"metadata":{"emulator":{"name":"functions"},"message":"Setting GAC to /Users/rodrigowahl/.config/firebase/lwahlnayar_gmail_com_application_default_credentials.json"}}
+[debug] [2023-10-17T11:24:14.691Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/github-api-317c6/adminSdkConfig [none]
+[debug] [2023-10-17T11:24:14.982Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/github-api-317c6/adminSdkConfig 200
+[debug] [2023-10-17T11:24:14.982Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/github-api-317c6/adminSdkConfig {"projectId":"github-api-317c6","storageBucket":"github-api-317c6.appspot.com"}
+[debug] [2023-10-17T11:24:14.994Z] Ignoring unsupported arg: auto_download {"metadata":{"emulator":{"name":"ui"},"message":"Ignoring unsupported arg: auto_download"}}
+[debug] [2023-10-17T11:24:14.994Z] Ignoring unsupported arg: port {"metadata":{"emulator":{"name":"ui"},"message":"Ignoring unsupported arg: port"}}
+[debug] [2023-10-17T11:24:14.994Z] Starting Emulator UI with command {"binary":"node","args":["/Users/rodrigowahl/.cache/firebase/emulators/ui-v1.11.7/server/server.js"],"optionalArgs":[],"joinArgs":false} {"metadata":{"emulator":{"name":"ui"},"message":"Starting Emulator UI with command {\"binary\":\"node\",\"args\":[\"/Users/rodrigowahl/.cache/firebase/emulators/ui-v1.11.7/server/server.js\"],\"optionalArgs\":[],\"joinArgs\":false}"}}
 [info] i  ui: Emulator UI logging to ui-debug.log {"metadata":{"emulator":{"name":"ui"},"message":"Emulator UI logging to \u001b[1mui-debug.log\u001b[22m"}}
-[debug] [2023-10-17T09:40:09.800Z] Web / API server started at 127.0.0.1:4000
+[debug] [2023-10-17T11:24:15.067Z] Web / API server started at 127.0.0.1:4000
  {"metadata":{"emulator":{"name":"ui"},"message":"Web / API server started at 127.0.0.1:4000\n"}}
-[debug] [2023-10-17T09:40:09.800Z] Web / API server started at ::1:4000
+[debug] [2023-10-17T11:24:15.067Z] Web / API server started at ::1:4000
  {"metadata":{"emulator":{"name":"ui"},"message":"Web / API server started at ::1:4000\n"}}
 [info] i  functions: Watching "/Users/rodrigowahl/Documents/git-repositories/github-api/functions" for Cloud Functions... {"metadata":{"emulator":{"name":"functions"},"message":"Watching \"/Users/rodrigowahl/Documents/git-repositories/github-api/functions\" for Cloud Functions..."}}
-[debug] [2023-10-17T09:40:09.997Z] Validating nodejs source
-[debug] [2023-10-17T09:40:10.304Z] > [functions] package.json contents: {
+[debug] [2023-10-17T11:24:15.259Z] Validating nodejs source
+[debug] [2023-10-17T11:24:15.536Z] > [functions] package.json contents: {
   "name": "functions",
   "scripts": {
     "build": "tsc",
@@ -58,15 +58,15 @@
   },
   "private": true
 }
-[debug] [2023-10-17T09:40:10.304Z] Building nodejs source
-[debug] [2023-10-17T09:40:10.305Z] Failed to find version of module node: reached end of search path /Users/rodrigowahl/Documents/git-repositories/github-api/functions/node_modules
+[debug] [2023-10-17T11:24:15.537Z] Building nodejs source
+[debug] [2023-10-17T11:24:15.537Z] Failed to find version of module node: reached end of search path /Users/rodrigowahl/Documents/git-repositories/github-api/functions/node_modules
 [warn] ⚠  functions: Your requested "node" version "18" doesn't match your global version "16". Using node@16 from host. 
 [info] i  functions: Loaded environment variables from .env. 
-[debug] [2023-10-17T09:40:10.307Z] Could not find functions.yaml. Must use http discovery
-[debug] [2023-10-17T09:40:10.310Z] Found firebase-functions binary at '/Users/rodrigowahl/Documents/git-repositories/github-api/functions/node_modules/.bin/firebase-functions'
-[info] Serving at port 8414
+[debug] [2023-10-17T11:24:15.539Z] Could not find functions.yaml. Must use http discovery
+[debug] [2023-10-17T11:24:15.542Z] Found firebase-functions binary at '/Users/rodrigowahl/Documents/git-repositories/github-api/functions/node_modules/.bin/firebase-functions'
+[info] Serving at port 8629
 
-[debug] [2023-10-17T09:40:10.445Z] Got response from /__/functions.yaml {"endpoints":{"nodeApi":{"availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":null,"ingressSettings":null,"concurrency":null,"serviceAccountEmail":null,"vpc":null,"platform":"gcfv2","labels":{},"httpsTrigger":{},"entryPoint":"nodeApi"}},"specVersion":"v1alpha1","requiredAPIs":[]}
+[debug] [2023-10-17T11:24:15.673Z] Got response from /__/functions.yaml {"endpoints":{"nodeApi":{"availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":null,"ingressSettings":null,"concurrency":null,"serviceAccountEmail":null,"vpc":null,"platform":"gcfv2","labels":{},"httpsTrigger":{},"entryPoint":"nodeApi"}},"specVersion":"v1alpha1","requiredAPIs":[]}
 [info] shutdown requested via /__/quitquitquit
 
 [info] ✔  functions: Loaded functions definitions from source: nodeApi. {"metadata":{"emulator":{"name":"functions"},"message":"Loaded functions definitions from source: nodeApi."}}
@@ -87,85 +87,53 @@
 
 Issues? Report them at https://github.com/firebase/firebase-tools/issues and attach the *-debug.log files.
  
-[debug] [2023-10-17T09:40:53.083Z] [work-queue] {"queuedWork":["/github-api-317c6/us-central1/nodeApi/signup-2023-10-17T09:40:53.082Z"],"queueLength":1,"runningWork":[],"workRunningCount":0}
-[debug] [2023-10-17T09:40:53.084Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":["/github-api-317c6/us-central1/nodeApi/signup-2023-10-17T09:40:53.082Z"],"workRunningCount":1}
-[debug] [2023-10-17T09:40:53.084Z] Accepted request OPTIONS /github-api-317c6/us-central1/nodeApi/signup --> us-central1-nodeApi
-[debug] [2023-10-17T09:40:53.086Z] [functions] Runtime ready! Sending request! {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Runtime ready! Sending request!"}}
-[debug] [2023-10-17T09:40:53.087Z] [functions] Got req.url=/github-api-317c6/us-central1/nodeApi/signup, mapping to path=/signup {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Got req.url=/github-api-317c6/us-central1/nodeApi/signup, mapping to path=/signup"}}
+[debug] [2023-10-17T11:25:12.968Z] [work-queue] {"queuedWork":["/github-api-317c6/us-central1/nodeApi/singup-2023-10-17T11:25:12.967Z"],"queueLength":1,"runningWork":[],"workRunningCount":0}
+[debug] [2023-10-17T11:25:12.969Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":["/github-api-317c6/us-central1/nodeApi/singup-2023-10-17T11:25:12.967Z"],"workRunningCount":1}
+[debug] [2023-10-17T11:25:12.970Z] Accepted request POST /github-api-317c6/us-central1/nodeApi/singup --> us-central1-nodeApi
+[debug] [2023-10-17T11:25:12.971Z] [functions] Runtime ready! Sending request! {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Runtime ready! Sending request!"}}
+[debug] [2023-10-17T11:25:12.972Z] [functions] Got req.url=/github-api-317c6/us-central1/nodeApi/singup, mapping to path=/singup {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Got req.url=/github-api-317c6/us-central1/nodeApi/singup, mapping to path=/singup"}}
 [info] i  functions: Loaded environment variables from .env. 
-[debug] [2023-10-17T09:40:53.101Z] [worker-pool] addWorker(us-central1-nodeApi) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] addWorker(us-central1-nodeApi)"}}
-[debug] [2023-10-17T09:40:53.102Z] [worker-pool] Adding worker with key us-central1-nodeApi, total=1 {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] Adding worker with key us-central1-nodeApi, total=1"}}
+[debug] [2023-10-17T11:25:12.984Z] [worker-pool] addWorker(us-central1-nodeApi) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] addWorker(us-central1-nodeApi)"}}
+[debug] [2023-10-17T11:25:12.985Z] [worker-pool] Adding worker with key us-central1-nodeApi, total=1 {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] Adding worker with key us-central1-nodeApi, total=1"}}
 [warn] ⚠  The Cloud Functions emulator requires the module "firebase-admin" to be installed as a dependency. To fix this, run "npm install --save firebase-admin" in your functions directory. {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-nodeApi"},"extension":{},"message":"The Cloud Functions emulator requires the module \"firebase-admin\" to be installed as a dependency. To fix this, run \"npm install --save firebase-admin\" in your functions directory."}}
 [info] i  functions: Your functions could not be parsed due to an issue with your node_modules (see above) {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-nodeApi"},"extension":{},"message":"Your functions could not be parsed due to an issue with your node_modules (see above)"}}
-[debug] [2023-10-17T09:40:53.722Z] [runtime-status] [78669] Functions runtime initialized. {"cwd":"/Users/rodrigowahl/Documents/git-repositories/github-api/functions","node_version":"16.20.1"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-nodeApi"},"extension":{},"message":"[runtime-status] [78669] Functions runtime initialized. {\"cwd\":\"/Users/rodrigowahl/Documents/git-repositories/github-api/functions\",\"node_version\":\"16.20.1\"}"}}
-[debug] [2023-10-17T09:40:53.722Z] [runtime-status] [78669] Listening to port: /var/folders/km/14mvmpyx36ldm0ksw07w3skr0000gn/T/fire_emu_2a762da5a1ff0ca4.sock {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-nodeApi"},"extension":{},"message":"[runtime-status] [78669] Listening to port: /var/folders/km/14mvmpyx36ldm0ksw07w3skr0000gn/T/fire_emu_2a762da5a1ff0ca4.sock"}}
-[debug] [2023-10-17T09:40:53.816Z] [worker-us-central1-nodeApi-4e1af723-de01-446d-a965-94180ca7995b]: IDLE {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-nodeApi"},"extension":{},"message":"[worker-us-central1-nodeApi-4e1af723-de01-446d-a965-94180ca7995b]: IDLE"}}
-[debug] [2023-10-17T09:40:53.816Z] [worker-pool] submitRequest(triggerId=us-central1-nodeApi) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] submitRequest(triggerId=us-central1-nodeApi)"}}
+[debug] [2023-10-17T11:25:13.597Z] [runtime-status] [79589] Functions runtime initialized. {"cwd":"/Users/rodrigowahl/Documents/git-repositories/github-api/functions","node_version":"16.20.1"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-nodeApi"},"extension":{},"message":"[runtime-status] [79589] Functions runtime initialized. {\"cwd\":\"/Users/rodrigowahl/Documents/git-repositories/github-api/functions\",\"node_version\":\"16.20.1\"}"}}
+[debug] [2023-10-17T11:25:13.597Z] [runtime-status] [79589] Listening to port: /var/folders/km/14mvmpyx36ldm0ksw07w3skr0000gn/T/fire_emu_b84e98f4fbf2e49b.sock {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-nodeApi"},"extension":{},"message":"[runtime-status] [79589] Listening to port: /var/folders/km/14mvmpyx36ldm0ksw07w3skr0000gn/T/fire_emu_b84e98f4fbf2e49b.sock"}}
+[debug] [2023-10-17T11:25:13.702Z] [worker-us-central1-nodeApi-3bbedde5-c554-4bd5-9ad9-908c3a55c68e]: IDLE {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-nodeApi"},"extension":{},"message":"[worker-us-central1-nodeApi-3bbedde5-c554-4bd5-9ad9-908c3a55c68e]: IDLE"}}
+[debug] [2023-10-17T11:25:13.702Z] [worker-pool] submitRequest(triggerId=us-central1-nodeApi) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] submitRequest(triggerId=us-central1-nodeApi)"}}
 [info] i  functions: Beginning execution of "us-central1-nodeApi" {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-nodeApi"},"extension":{},"message":"Beginning execution of \"us-central1-nodeApi\""}}
-[debug] [2023-10-17T09:40:53.816Z] [worker-us-central1-nodeApi-4e1af723-de01-446d-a965-94180ca7995b]: BUSY {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-nodeApi"},"extension":{},"message":"[worker-us-central1-nodeApi-4e1af723-de01-446d-a965-94180ca7995b]: BUSY"}}
-[debug] [2023-10-17T09:40:53.819Z] Finishing up request with event=pause {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-nodeApi"},"extension":{},"message":"Finishing up request with event=pause"}}
-[info] i  functions: Finished "us-central1-nodeApi" in 2.504209ms {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-nodeApi"},"extension":{},"message":"Finished \"us-central1-nodeApi\" in 2.504209ms"}}
-[debug] [2023-10-17T09:40:53.819Z] [worker-us-central1-nodeApi-4e1af723-de01-446d-a965-94180ca7995b]: IDLE {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-nodeApi"},"extension":{},"message":"[worker-us-central1-nodeApi-4e1af723-de01-446d-a965-94180ca7995b]: IDLE"}}
-[debug] [2023-10-17T09:40:53.819Z] Finishing up request with event=finish {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-nodeApi"},"extension":{},"message":"Finishing up request with event=finish"}}
-[debug] [2023-10-17T09:40:53.819Z] Finishing up request with event=close {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-nodeApi"},"extension":{},"message":"Finishing up request with event=close"}}
-[debug] [2023-10-17T09:40:53.819Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":[],"workRunningCount":0}
-[debug] [2023-10-17T09:40:53.821Z] [work-queue] {"queuedWork":["/github-api-317c6/us-central1/nodeApi/signup-2023-10-17T09:40:53.821Z"],"queueLength":1,"runningWork":[],"workRunningCount":0}
-[debug] [2023-10-17T09:40:53.821Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":["/github-api-317c6/us-central1/nodeApi/signup-2023-10-17T09:40:53.821Z"],"workRunningCount":1}
-[debug] [2023-10-17T09:40:53.821Z] Accepted request POST /github-api-317c6/us-central1/nodeApi/signup --> us-central1-nodeApi
-[debug] [2023-10-17T09:40:53.821Z] [functions] Runtime ready! Sending request! {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Runtime ready! Sending request!"}}
-[debug] [2023-10-17T09:40:53.821Z] [functions] Got req.url=/github-api-317c6/us-central1/nodeApi/signup, mapping to path=/signup {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Got req.url=/github-api-317c6/us-central1/nodeApi/signup, mapping to path=/signup"}}
-[debug] [2023-10-17T09:40:53.821Z] [worker-pool] submitRequest(triggerId=us-central1-nodeApi) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] submitRequest(triggerId=us-central1-nodeApi)"}}
+[debug] [2023-10-17T11:25:13.702Z] [worker-us-central1-nodeApi-3bbedde5-c554-4bd5-9ad9-908c3a55c68e]: BUSY {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-nodeApi"},"extension":{},"message":"[worker-us-central1-nodeApi-3bbedde5-c554-4bd5-9ad9-908c3a55c68e]: BUSY"}}
+[debug] [2023-10-17T11:25:13.713Z] Finishing up request with event=pause {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-nodeApi"},"extension":{},"message":"Finishing up request with event=pause"}}
+[info] i  functions: Finished "us-central1-nodeApi" in 10.555042ms {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-nodeApi"},"extension":{},"message":"Finished \"us-central1-nodeApi\" in 10.555042ms"}}
+[debug] [2023-10-17T11:25:13.713Z] [worker-us-central1-nodeApi-3bbedde5-c554-4bd5-9ad9-908c3a55c68e]: IDLE {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-nodeApi"},"extension":{},"message":"[worker-us-central1-nodeApi-3bbedde5-c554-4bd5-9ad9-908c3a55c68e]: IDLE"}}
+[debug] [2023-10-17T11:25:13.713Z] Finishing up request with event=finish {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-nodeApi"},"extension":{},"message":"Finishing up request with event=finish"}}
+[debug] [2023-10-17T11:25:13.713Z] Finishing up request with event=close {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-nodeApi"},"extension":{},"message":"Finishing up request with event=close"}}
+[debug] [2023-10-17T11:25:13.713Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":[],"workRunningCount":0}
+[debug] [2023-10-17T11:25:41.869Z] [work-queue] {"queuedWork":["/github-api-317c6/us-central1/nodeApi/signup-2023-10-17T11:25:41.869Z"],"queueLength":1,"runningWork":[],"workRunningCount":0}
+[debug] [2023-10-17T11:25:41.870Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":["/github-api-317c6/us-central1/nodeApi/signup-2023-10-17T11:25:41.869Z"],"workRunningCount":1}
+[debug] [2023-10-17T11:25:41.870Z] Accepted request POST /github-api-317c6/us-central1/nodeApi/signup --> us-central1-nodeApi
+[debug] [2023-10-17T11:25:41.871Z] [functions] Runtime ready! Sending request! {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Runtime ready! Sending request!"}}
+[debug] [2023-10-17T11:25:41.872Z] [functions] Got req.url=/github-api-317c6/us-central1/nodeApi/signup, mapping to path=/signup {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Got req.url=/github-api-317c6/us-central1/nodeApi/signup, mapping to path=/signup"}}
+[debug] [2023-10-17T11:25:41.873Z] [worker-pool] submitRequest(triggerId=us-central1-nodeApi) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] submitRequest(triggerId=us-central1-nodeApi)"}}
 [info] i  functions: Beginning execution of "us-central1-nodeApi" {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-nodeApi"},"extension":{},"message":"Beginning execution of \"us-central1-nodeApi\""}}
-[debug] [2023-10-17T09:40:53.821Z] [worker-us-central1-nodeApi-4e1af723-de01-446d-a965-94180ca7995b]: BUSY {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-nodeApi"},"extension":{},"message":"[worker-us-central1-nodeApi-4e1af723-de01-446d-a965-94180ca7995b]: BUSY"}}
-[debug] [2023-10-17T09:40:54.729Z] Finishing up request with event=pause {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-nodeApi"},"extension":{},"message":"Finishing up request with event=pause"}}
-[info] i  functions: Finished "us-central1-nodeApi" in 907.921ms {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-nodeApi"},"extension":{},"message":"Finished \"us-central1-nodeApi\" in 907.921ms"}}
-[debug] [2023-10-17T09:40:54.730Z] [worker-us-central1-nodeApi-4e1af723-de01-446d-a965-94180ca7995b]: IDLE {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-nodeApi"},"extension":{},"message":"[worker-us-central1-nodeApi-4e1af723-de01-446d-a965-94180ca7995b]: IDLE"}}
-[debug] [2023-10-17T09:40:54.730Z] Finishing up request with event=finish {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-nodeApi"},"extension":{},"message":"Finishing up request with event=finish"}}
-[debug] [2023-10-17T09:40:54.730Z] Finishing up request with event=close {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-nodeApi"},"extension":{},"message":"Finishing up request with event=close"}}
-[debug] [2023-10-17T09:40:54.730Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":[],"workRunningCount":0}
-[debug] [2023-10-17T09:42:16.951Z] File /Users/rodrigowahl/Documents/git-repositories/github-api/functions/lib/server.js.map changed, reloading triggers {"metadata":{"emulator":{"name":"functions"},"message":"File /Users/rodrigowahl/Documents/git-repositories/github-api/functions/lib/server.js.map changed, reloading triggers"}}
-[debug] [2023-10-17T09:42:16.951Z] File /Users/rodrigowahl/Documents/git-repositories/github-api/functions/lib/server.js changed, reloading triggers {"metadata":{"emulator":{"name":"functions"},"message":"File /Users/rodrigowahl/Documents/git-repositories/github-api/functions/lib/server.js changed, reloading triggers"}}
-[debug] [2023-10-17T09:42:17.954Z] Validating nodejs source
-[debug] [2023-10-17T09:42:18.313Z] > [functions] package.json contents: {
-  "name": "functions",
-  "scripts": {
-    "build": "tsc",
-    "build:watch": "tsc --watch",
-    "serve": "npm run build && firebase emulators:start --only functions",
-    "shell": "npm run build && firebase functions:shell",
-    "start": "npm run shell",
-    "deploy": "firebase deploy --only functions",
-    "logs": "firebase functions:log"
-  },
-  "engines": {
-    "node": "18"
-  },
-  "main": "lib/server.js",
-  "dependencies": {
-    "cors": "^2.8.5",
-    "express": "^4.18.2",
-    "firebase": "^10.5.0",
-    "firebase-functions": "^4.4.1"
-  },
-  "devDependencies": {
-    "firebase-functions-test": "^3.1.0",
-    "typescript": "^4.9.0"
-  },
-  "private": true
-}
-[debug] [2023-10-17T09:42:18.313Z] Building nodejs source
-[debug] [2023-10-17T09:42:18.313Z] Failed to find version of module node: reached end of search path /Users/rodrigowahl/Documents/git-repositories/github-api/functions/node_modules
-[warn] ⚠  functions: Your requested "node" version "18" doesn't match your global version "16". Using node@16 from host. 
-[info] i  functions: Loaded environment variables from .env. 
-[debug] [2023-10-17T09:42:18.314Z] Could not find functions.yaml. Must use http discovery
-[debug] [2023-10-17T09:42:18.315Z] Found firebase-functions binary at '/Users/rodrigowahl/Documents/git-repositories/github-api/functions/node_modules/.bin/firebase-functions'
-[info] Serving at port 8427
-
-[debug] [2023-10-17T09:42:18.493Z] Got response from /__/functions.yaml {"endpoints":{"nodeApi":{"availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":null,"ingressSettings":null,"concurrency":null,"serviceAccountEmail":null,"vpc":null,"platform":"gcfv2","labels":{},"httpsTrigger":{},"entryPoint":"nodeApi"}},"specVersion":"v1alpha1","requiredAPIs":[]}
-[info] shutdown requested via /__/quitquitquit
-
-[info] ✔  functions: Loaded functions definitions from source: nodeApi. {"metadata":{"emulator":{"name":"functions"},"message":"Loaded functions definitions from source: nodeApi."}}
-[debug] [2023-10-17T09:42:18.497Z] [worker-pool] Shutting down IDLE worker (us-central1-nodeApi) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] Shutting down IDLE worker (us-central1-nodeApi)"}}
-[debug] [2023-10-17T09:42:18.497Z] [worker-us-central1-nodeApi-4e1af723-de01-446d-a965-94180ca7995b]: FINISHING {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-nodeApi"},"extension":{},"message":"[worker-us-central1-nodeApi-4e1af723-de01-446d-a965-94180ca7995b]: FINISHING"}}
-[debug] [2023-10-17T09:42:18.500Z] [worker-us-central1-nodeApi-4e1af723-de01-446d-a965-94180ca7995b]: exited {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-nodeApi"},"extension":{},"message":"[worker-us-central1-nodeApi-4e1af723-de01-446d-a965-94180ca7995b]: exited"}}
-[debug] [2023-10-17T09:42:18.500Z] [worker-us-central1-nodeApi-4e1af723-de01-446d-a965-94180ca7995b]: FINISHED {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-nodeApi"},"extension":{},"message":"[worker-us-central1-nodeApi-4e1af723-de01-446d-a965-94180ca7995b]: FINISHED"}}
+[debug] [2023-10-17T11:25:41.873Z] [worker-us-central1-nodeApi-3bbedde5-c554-4bd5-9ad9-908c3a55c68e]: BUSY {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-nodeApi"},"extension":{},"message":"[worker-us-central1-nodeApi-3bbedde5-c554-4bd5-9ad9-908c3a55c68e]: BUSY"}}
+[debug] [2023-10-17T11:25:42.753Z] Finishing up request with event=pause {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-nodeApi"},"extension":{},"message":"Finishing up request with event=pause"}}
+[info] i  functions: Finished "us-central1-nodeApi" in 880.481333ms {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-nodeApi"},"extension":{},"message":"Finished \"us-central1-nodeApi\" in 880.481333ms"}}
+[debug] [2023-10-17T11:25:42.754Z] [worker-us-central1-nodeApi-3bbedde5-c554-4bd5-9ad9-908c3a55c68e]: IDLE {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-nodeApi"},"extension":{},"message":"[worker-us-central1-nodeApi-3bbedde5-c554-4bd5-9ad9-908c3a55c68e]: IDLE"}}
+[debug] [2023-10-17T11:25:42.754Z] Finishing up request with event=finish {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-nodeApi"},"extension":{},"message":"Finishing up request with event=finish"}}
+[debug] [2023-10-17T11:25:42.754Z] Finishing up request with event=close {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-nodeApi"},"extension":{},"message":"Finishing up request with event=close"}}
+[debug] [2023-10-17T11:25:42.754Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":[],"workRunningCount":0}
+[debug] [2023-10-17T11:26:36.443Z] [work-queue] {"queuedWork":["/github-api-317c6/us-central1/nodeApi/login-2023-10-17T11:26:36.443Z"],"queueLength":1,"runningWork":[],"workRunningCount":0}
+[debug] [2023-10-17T11:26:36.444Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":["/github-api-317c6/us-central1/nodeApi/login-2023-10-17T11:26:36.443Z"],"workRunningCount":1}
+[debug] [2023-10-17T11:26:36.444Z] Accepted request POST /github-api-317c6/us-central1/nodeApi/login --> us-central1-nodeApi
+[debug] [2023-10-17T11:26:36.444Z] [functions] Runtime ready! Sending request! {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Runtime ready! Sending request!"}}
+[debug] [2023-10-17T11:26:36.445Z] [functions] Got req.url=/github-api-317c6/us-central1/nodeApi/login, mapping to path=/login {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Got req.url=/github-api-317c6/us-central1/nodeApi/login, mapping to path=/login"}}
+[debug] [2023-10-17T11:26:36.445Z] [worker-pool] submitRequest(triggerId=us-central1-nodeApi) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] submitRequest(triggerId=us-central1-nodeApi)"}}
+[info] i  functions: Beginning execution of "us-central1-nodeApi" {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-nodeApi"},"extension":{},"message":"Beginning execution of \"us-central1-nodeApi\""}}
+[debug] [2023-10-17T11:26:36.445Z] [worker-us-central1-nodeApi-3bbedde5-c554-4bd5-9ad9-908c3a55c68e]: BUSY {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-nodeApi"},"extension":{},"message":"[worker-us-central1-nodeApi-3bbedde5-c554-4bd5-9ad9-908c3a55c68e]: BUSY"}}
+[debug] [2023-10-17T11:26:36.985Z] Finishing up request with event=pause {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-nodeApi"},"extension":{},"message":"Finishing up request with event=pause"}}
+[info] i  functions: Finished "us-central1-nodeApi" in 540.395667ms {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-nodeApi"},"extension":{},"message":"Finished \"us-central1-nodeApi\" in 540.395667ms"}}
+[debug] [2023-10-17T11:26:36.986Z] [worker-us-central1-nodeApi-3bbedde5-c554-4bd5-9ad9-908c3a55c68e]: IDLE {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-nodeApi"},"extension":{},"message":"[worker-us-central1-nodeApi-3bbedde5-c554-4bd5-9ad9-908c3a55c68e]: IDLE"}}
+[debug] [2023-10-17T11:26:36.986Z] Finishing up request with event=finish {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-nodeApi"},"extension":{},"message":"Finishing up request with event=finish"}}
+[debug] [2023-10-17T11:26:36.986Z] Finishing up request with event=close {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-nodeApi"},"extension":{},"message":"Finishing up request with event=close"}}
+[debug] [2023-10-17T11:26:36.986Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":[],"workRunningCount":0}

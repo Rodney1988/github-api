@@ -1,6 +1,6 @@
-export interface SignUpResponse {
+export interface LoginResponse {
   user: User;
-  providerId: any;
+  providerId: null | string;
   _tokenResponse: TokenResponse;
   operationType: string;
 }
@@ -10,7 +10,7 @@ interface User {
   email: string;
   emailVerified: boolean;
   isAnonymous: boolean;
-  providerData: ProviderDaum[];
+  providerData: ProviderData[];
   stsTokenManager: StsTokenManager;
   createdAt: string;
   lastLoginAt: string;
@@ -18,13 +18,13 @@ interface User {
   appName: string;
 }
 
-interface ProviderDaum {
+interface ProviderData {
   providerId: string;
   uid: string;
-  displayName: any;
+  displayName: null | string;
   email: string;
-  phoneNumber: any;
-  photoURL: any;
+  phoneNumber: null | string;
+  photoURL: null | string;
 }
 
 interface StsTokenManager {
@@ -35,9 +35,11 @@ interface StsTokenManager {
 
 interface TokenResponse {
   kind: string;
-  idToken: string;
+  localId: string;
   email: string;
+  displayName: string;
+  idToken: string;
+  registered: boolean;
   refreshToken: string;
   expiresIn: string;
-  localId: string;
 }

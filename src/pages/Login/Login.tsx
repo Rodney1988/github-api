@@ -18,11 +18,13 @@ export const Login = () => {
     event.preventDefault();
     try {
       const response = await login(userEmail, userPassword);
+      console.log('handleSubmit login responose:', response);
       if (!isLoading) {
-        localStorage.setItem('token', response.idToken);
+        const idToken = response._tokenResponse.idToken;
+        localStorage.setItem('token', idToken);
         context?.dispatch({
           type: 'SET_USER_TOKEN',
-          payload: response.idToken,
+          payload: idToken,
         });
       }
     } catch (error) {

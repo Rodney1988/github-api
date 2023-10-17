@@ -34,7 +34,18 @@ export const Login = () => {
   };
 
   if (isLoading) {
-    return <CircularProgress />;
+    return (
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          height: '300px',
+        }}
+      >
+        <CircularProgress />
+      </div>
+    );
   }
 
   return (

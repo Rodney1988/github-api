@@ -27,7 +27,7 @@ export const SignUp = () => {
       }
     } catch (error) {
       if (error instanceof Error) {
-        console.warn(error);
+        console.error(error.message);
       }
     }
   };

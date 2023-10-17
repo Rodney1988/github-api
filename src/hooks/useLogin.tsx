@@ -20,7 +20,6 @@ export const useLogin = () => {
         `Log In failed with an error code ${responseData.error.code}, ${responseData.error.message}`
       );
     }
-    console.log('USELOGIN RES DATA', responseData);
     return responseData as LoginResponse;
   };
 

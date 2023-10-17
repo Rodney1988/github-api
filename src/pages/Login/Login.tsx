@@ -18,7 +18,6 @@ export const Login = () => {
     event.preventDefault();
     try {
       const response = await login(userEmail, userPassword);
-      console.log('handleSubmit login responose:', response);
       if (!isLoading) {
         const idToken = response._tokenResponse.idToken;
         localStorage.setItem('token', idToken);

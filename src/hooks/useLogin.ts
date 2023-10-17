@@ -1,27 +1,35 @@
 import { useState } from 'react';
-
 import { baseUrl } from '../urls';
 import { LoginResponse } from '../types/loginType';
 
 export const useLogin = () => {
-  const [isLoading, setIsloading] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [error, setError] = useState<string>('');
 
   const login = async (email: string, password: string) => {
-    setIsloading(true);
-    const response = await fetch(baseUrl + '/login', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email, password, returnSecureToken: true }),
-    });
-    setIsloading(false);
-    const responseData = await response.json();
-    if (!response.ok) {
-      throw new Error(
-        `Log In failed with an error code ${responseData.error.code}, ${responseData.error.message}`
-      );
+    setIsLoading(true);
+    try {
+      const response = await fetch(baseUrl + '/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password, returnSecureToken: true }),
+      });
+      const responseData = await response.json();
+      setIsLoading(false);
+      if (!response.ok) {
+        setError(
+          responseData?.error?.message || 'Something went wrong logging in'
+        );
+        throw new Error(error);
+      }
+      setError('');
+      return responseData as LoginResponse;
+    } catch (error: unknown) {
+      setIsLoading(false);
+      setError('Something went wrong logging in');
+      throw error;
     }
-    return responseData as LoginResponse;
   };
 
-  return { login, isLoading };
+  return { login, isLoading, error };
 };

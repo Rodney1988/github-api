@@ -17,7 +17,7 @@ export const SignUp = () => {
     event.preventDefault();
     try {
       const response = await signUp(userEmail, userPassword);
-      if (response) {
+      if (!isLoading && response) {
         const idToken = response._tokenResponse.idToken;
         localStorage.setItem('token', idToken);
         context?.dispatch({
@@ -25,7 +25,7 @@ export const SignUp = () => {
           payload: idToken,
         });
       }
-    } catch (error) {
+    } catch (error: unknown) {
       if (error instanceof Error) {
         console.error(error.message);
       }

@@ -26,7 +26,7 @@ export const useSignUp = () => {
       }
       setError('');
       return responseData as SignUpResponse;
-    } catch (error) {
+    } catch (error: unknown) {
       setIsLoading(false);
       setError('Something went wrong signing up');
       throw error;

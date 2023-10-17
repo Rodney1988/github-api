@@ -9,8 +9,7 @@ import { useLogin } from '../../hooks/useLogin';
 export const Login = () => {
   const [userEmail, setUserEmail] = useState<string>('');
   const [userPassword, setUserPassword] = useState<string>('');
-  const [error, setError] = useState<string>('');
-  const { login, isLoading } = useLogin();
+  const { login, isLoading, error } = useLogin();
 
   const context = useAuthContext();
 
@@ -18,7 +17,7 @@ export const Login = () => {
     event.preventDefault();
     try {
       const response = await login(userEmail, userPassword);
-      if (!isLoading) {
+      if (!isLoading && response) {
         const idToken = response._tokenResponse.idToken;
         localStorage.setItem('token', idToken);
         context?.dispatch({
@@ -26,9 +25,9 @@ export const Login = () => {
           payload: idToken,
         });
       }
-    } catch (error) {
+    } catch (error: unknown) {
       if (error instanceof Error) {
-        setError(error.message);
+        console.error(error.message);
       }
     }
   };

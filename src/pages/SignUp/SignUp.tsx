@@ -9,8 +9,7 @@ import { Link } from 'react-router-dom';
 export const SignUp = () => {
   const [userEmail, setUserEmail] = useState<string>('');
   const [userPassword, setUserPassword] = useState<string>('');
-  const [error, setError] = useState<string>('');
-  const { signUp, isLoading } = useSignUp();
+  const { signUp, isLoading, error } = useSignUp();
 
   const context = useAuthContext();
 
@@ -18,7 +17,7 @@ export const SignUp = () => {
     event.preventDefault();
     try {
       const response = await signUp(userEmail, userPassword);
-      if (!isLoading && response) {
+      if (response) {
         const idToken = response._tokenResponse.idToken;
         localStorage.setItem('token', idToken);
         context?.dispatch({
@@ -28,9 +27,7 @@ export const SignUp = () => {
       }
     } catch (error) {
       if (error instanceof Error) {
-        setError(error.message);
-      } else {
-        setError('Something went wrong signing up');
+        console.warn(error);
       }
     }
   };

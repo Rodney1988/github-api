@@ -16,11 +16,11 @@ const User: React.FC<UserProp> = ({ userProp }) => {
 
   const {
     data: reposData,
-    fetchNextPage,
-    hasNextPage,
+    fetchNextPage, // Imperative fetch next
+    hasNextPage, // boolean returned from getNextPageParam
     isLoading,
     isError,
-    isFetchingNextPage,
+    isFetchingNextPage, // boolean for loading the latest batch in loop
   } = useInfiniteQuery(
     ['userRepos', userProp.id],
     ({ pageParam = 1 }) => getRepos(userProp.login, pageParam),
@@ -28,8 +28,11 @@ const User: React.FC<UserProp> = ({ userProp }) => {
       refetchOnWindowFocus: false,
       retry: 0,
       getNextPageParam: (lastPage, allPages) => {
+        /* lastPage arg is the current/latest page in the loop. AllPages mean all pages looped so far. in the custom Oktokit hook
+        we set the default of 2 per page, pageParam 1 sets a start of the loop to 1 */
         const nextPage =
           lastPage.length === 2 ? allPages.length + 1 : undefined;
+        /* the returned nextPage is the boolean for hasNextPage */
         return nextPage;
       },
     }
